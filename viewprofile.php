@@ -1,23 +1,25 @@
 <?php
+$showAlert = false;
+$showError = false;
 session_start();
 
-$rollno = $_SESSION["rollno"];
+$rollno = $_SESSION['rollno'];
 
 include "connection.php";
 
-$details = $conn->query("select * from students where rollno=$rollno;");
+$details = $conn->query("select * from students where rollno='$rollno';");
 
-$GLOBALS['username'] = mysqli_fetch_assoc($details)['username'];
-$GLOBALS['email'] = mysqli_fetch_assoc($details)['email'];
-$GLOBALS['age'] = mysqli_fetch_assoc($details)['age'];
-$GLOBALS['batchyear'] = mysqli_fetch_assoc($details)['batchyear'];
-$GLOBALS['spec'] = mysqli_fetch_assoc($details)['spec'];
-$GLOBALS['aoi'] = mysqli_fetch_assoc($details)['aoi'];
-$GLOBALS['class10'] = mysqli_fetch_assoc($details)['class10'];
-$GLOBALS['class12'] = mysqli_fetch_assoc($details)['class12'];
-$GLOBALS['sem1'] = mysqli_fetch_assoc($details)['sem1'];
-$GLOBALS['sem2'] = mysqli_fetch_assoc($details)['sem2'];
-$GLOBALS['sem3'] = mysqli_fetch_assoc($details)['sem3'];
+$GLOBALS['username'] = mysqli_fetch_assoc($details)["username"];
+$GLOBALS['email'] = mysqli_fetch_assoc($details)["email"];
+$GLOBALS['age'] = mysqli_fetch_assoc($details)["age"];
+$GLOBALS['batchyear'] = mysqli_fetch_assoc($details)["batchyear"];
+$GLOBALS['spec'] = mysqli_fetch_assoc($conn->query("select spec from students where rollno='$rollno'"))["spec"];
+$GLOBALS['aoi'] = mysqli_fetch_assoc($details)["aoi"];
+$GLOBALS['class10'] = mysqli_fetch_assoc($details)["class10"];
+$GLOBALS['class12'] = mysqli_fetch_assoc($details)["class12"];
+$GLOBALS['sem1'] = mysqli_fetch_assoc($details)["sem1"];
+$GLOBALS['sem2'] = mysqli_fetch_assoc($details)["sem2"];
+$GLOBALS['sem3'] = mysqli_fetch_assoc($details)["sem3"];
 $GLOBALS['sem4'] = mysqli_fetch_assoc($details)['sem4'];
 $GLOBALS['sem5'] = mysqli_fetch_assoc($details)['sem5'];
 $GLOBALS['sem6'] = mysqli_fetch_assoc($details)['sem6'];
@@ -60,7 +62,7 @@ $GLOBALS['sem8'] = mysqli_fetch_assoc($details)['sem8'];
 
     <div class="container my-4">
         <h1 class="text-center">Personal Details</h1>
-        <form action="/dev/signup.php" method="post">
+        <form method="post">
             <div class="form row">
                 <div class="form-group col-md-6 ">
                     <label for="username">Username</label>
