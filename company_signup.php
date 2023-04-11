@@ -3,25 +3,16 @@ $showAlert = false;
 $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connection.php';
-    $username = $_POST["username"];
+    $name = $_POST["name"];
+    $pwd = $_POST["password"];
+    $cpwd = $_POST["conf_password"];
+    $description = $_POST["description"];
+    $phone = $_POST["phone"];
     $email = $_POST["email"];
-    $rollno = $_POST["rollno"];
-    $password = $_POST["password"];
-    $cpassword = $_POST["cpassword"];
-    $age = $_POST["age"];
-    $batchyear = $_POST["batchyear"];
-    $spec = $_POST["spec"];
-    $aoi = $_POST["aoi"];
-    $class10 = $_POST["class10"];
-    $class12 = $_POST["class12"];
-    $sem1 = $_POST["sem1"];
-    $sem2 = $_POST["sem2"];
-    $sem3 = $_POST["sem3"];
-    $sem4 = $_POST["sem4"];
-    $sem5 = $_POST["sem5"];
-    $sem6 = $_POST["sem6"];
-    $sem7 = $_POST["sem7"];
-    $sem8 = $_POST["sem8"];
+    $website = $_POST["website"];
+    $rep_name = $_POST["rep_name"];
+    $rep_phone = $_POST["rep_phone"];
+    $rep_email = $_POST["rep_email"];
 
     function endsWith($string, $smol)
     {
@@ -35,26 +26,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Check whether this username exists
-    $existSql = "SELECT * FROM `students` WHERE rollno = '$rollno'";
+    $existSql = "SELECT * FROM companies WHERE email = '$email'";
     $result = mysqli_query($conn, $existSql);
     $numExistRows = mysqli_num_rows($result);
     if ($numExistRows > 0) {
         // $exists = true;
-        $showError = "User Already Exists";
+        $showError = "User with given Email Already Exists";
     } else {
-        if (!endsWith($email, '@iitp.ac.in')) { //email should have iitp.ac.in
-            $showError = "Enter only IITP email address";
-        }
+        // TODO: validate email
         // $exists = false;
-        if (($password == $cpassword) && endsWith($email, '@iitp.ac.in')) {
+        if ($pwd == $cpwd) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `students` ( `username`, `password`, `email`,`rollno`,`age`,`batchyear`,`spec`,`aoi`,`class10`,`class12`,`sem1`,`sem2`,`sem3`,`sem4`,`sem5`,`sem6`,`sem7`,`sem8`) VALUES ('$username', '$hash', '$email','$rollno','$age','$batchyear','$spec','$aoi','$class10','$class12','$sem1','$sem2','$sem3','$sem4','$sem5','$sem6','$sem7','$sem8')";
+            $sql = "INSERT INTO companies (name, email, password, description, phone, email, website, rep_name, rep_phone, rep_email) VALUES ('$name', '$email', '$hash', '$description', '$phone', '$email', '$website', '$rep_name', '$rep_phone', '$rep_email')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $showAlert = true;
             }
-        } else if (!endsWith($email, '@iitp.ac.in')) {
-            $showError = "Enter only IITP email";
         } else {
             $showError = "Passwords do not match";
         }
@@ -97,16 +84,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-4">
-        <h1 class="text-center">Student Signup</h1>
+        <h1 class="text-center">Company Signup</h1>
         <form action="signup.php" method="post">
             <div class="form row">
-                <div class="form-group col-md-6 ">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group col-md-6 ">
-                    <label for="rollno">Roll Number</label>
-                    <input type="text" class="form-control" id="rollno" name="rollno" aria-describedby="emailHelp">
+                <div class="form-group col-md-12 ">
+                    <label for="name">Company Name(as in documents)</label>
+                    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
                 </div>
             </div>
             <div class="form row">
@@ -115,18 +98,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="cpassword">Confirm Password</label>
-                    <input type="password" class="form-control" id="cpassword" name="cpassword">
+                    <label for="conf_password">Confirm Password</label>
+                    <input type="password" class="form-control" id="conf_password" name="conf_password">
                     <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
-                    <label for="emailaddress">Email Address</label>
+                    <label for="email">Company Email Address</label>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="age">Age</label>
+                    <label for="age">Company Phone</label>
                     <input type="number" class="form-control" id="age" name="age">
                 </div>
                 <div class="form-group col-md-3">

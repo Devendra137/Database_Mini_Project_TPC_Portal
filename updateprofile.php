@@ -114,18 +114,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <br>
             <h3>Academic Details</h3><br>
             <div class="form row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="spec">Specialization</label>
                     <input type="text" class="form-control" id="spec" name="spec" value="<?php echo $GLOBALS['spec'] ?>"
                         readonly>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="batchyear">Batch Year</label>
                     <input type="number" class="form-control" id="batchyear" name="batchyear"
                         value="<?php echo $GLOBALS['batchyear'] ?>" readonly>
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="aoi">Area of Interest</label>
+            </div>
+            <div class="form row">
+                <div class="form-group col-md-12">
+                    <label for="aoi">Area(s) of Interest</label>
                     <input type="text" class="form-control" id="aoi" name="aoi" value="<?php echo $GLOBALS['aoi'] ?>">
                 </div>
             </div>
@@ -187,7 +189,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <br>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <center><button type="submit" class="btn btn-primary">Update</button></center>
         </form>
     </div>
 
