@@ -16,6 +16,12 @@
       <li class="nav-item">
         <a class="nav-link" href="signup.php">Signup</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="data_ret.php">All Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="eligible.php">Eligible Jobs</a>
+      </li>
       <!-- <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a>
       </li> -->
