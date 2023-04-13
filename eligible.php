@@ -27,7 +27,6 @@ $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
 ?>
 
-
 <!doctype html>
 <html lang="en">
 
@@ -41,15 +40,13 @@ $GLOBALS['sem8'] = $details['sem8'];
 </head>
 <body>
 <?php require '_nav_in.php' ?>
-<? 
     <div class="container-fluid px-4">
-    <form id="myForm" action="submit.php" method="post" target="_blank">
       <br>
-      <br>
+      <!-- <h1 class="mt-4">This is company page</h1> -->
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Eligible Jobs</h3>
+                    <h3>JOBS YOU ARE ELIGIBLE FOR</h3>
                 </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -57,37 +54,37 @@ $GLOBALS['sem8'] = $details['sem8'];
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">Job title</th>
-                      <th scope="col">Job status</th>
+                      <th scope="col">Job profile</th>
                       <th scope="col">Company</th>
                       <th scope="col">Salary</th>
-                      <th scope="col">Class10 marks</th>
-                      <th scope="col">Class12 marks</th>
-                      <th scope="col">Sem 6 cpi</th>
+                      <th scope="col">Class10</th>
+                      <th scope="col">Class12</th>
+                      <th scope="col">Sem6</th>
                       <th scope="col">Click to apply</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                        $class10 = $GLOBALS['class10'];
-                        $class12 = $GLOBALS['class12'];
-                        $sem6 = $GLOBALS['sem6'];
+                    $class10 = $GLOBALS['class10'];
+                    $class12 = $GLOBALS['class12'];
+                    $sem6 = $GLOBALS['sem6'];
 
-                      $query = "select * from company2 c where c.class10<='$class10' and c.class12<='$class12' and c.sem6<='$sem6'";
+                      $query = "select * from company2 natural join companies where class10 <= '$class10' and class12 <= '$class12' and sem6 <= '$sem6';";
                       $query_run = mysqli_query($conn,$query);
                       if(mysqli_num_rows($query_run)>0){
                         foreach($query_run as $row){
                           ?>
                           <tr>
-                            <td><?= $row["jobt"];?></td>
-                            <td><?= $row["jobs"];?></td>
-                            <td><?= $row["comp"];?></td>
-                            <td><?= $row["sal"];?></td>
+                            <td><?= $row["jobtitle"];?></td>
+                            <td><?= $row["jobprofile"];?></td>
+                            <td><?= $row["name"];?></td>
+                            <td><?= $row["salary"];?></td>
                             <td><?= $row["class10"];?></td>
                             <td><?= $row["class12"];?></td>
                             <td><?= $row["sem6"];?></td>
                             <td><form id="myForm" action="submit.php" method="post" target="_blank"><button type="submit" class="btn btn-primary" id="submitBtn">Apply</button></form></td>
+                            
                           </tr>
-                          
                         <?php
                         }
                       }
@@ -101,17 +98,11 @@ $GLOBALS['sem8'] = $details['sem8'];
                         ?>
                   </tbody>
               </table>
-              </div>
-              </div>
-              </div>
-              </div>
-              <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-              <script>
-        document.getElementById('myForm').addEventListener('submit', function() {
-            document.getElementById('submitBtn').disabled = true;});
-        </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            </body>
-            </html>
+</body>
+</html>

@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sem7 = $_POST["sem7"];
     $sem8 = $_POST["sem8"];
 
-    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem4='$sem5', sem4='$sem6', sem4='$sem7', sem4='$sem8' where rollno ='$rollno';");
+    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', sem8='$sem8' where rollno ='$rollno';");
 }
 ?>
 

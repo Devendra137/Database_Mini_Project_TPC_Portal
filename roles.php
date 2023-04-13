@@ -14,7 +14,7 @@ include 'connection.php'
     <title>Hello</title>
 </head>
 <body>
-<?php require '_nav_in.php' ?>
+<?php require '_nav_comp.php' ?>
     <div class="container-fluid px-4">
       <br>
       <!-- <h1 class="mt-4">This is company page</h1> -->
@@ -29,7 +29,7 @@ include 'connection.php'
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">Job title</th>
-                      <th scope="col">Job status</th>
+                      <th scope="col">Job profile</th>
                       <th scope="col">Salary</th>
                       <th scope="col">Last Date</th>
                     </tr>
@@ -42,9 +42,9 @@ include 'connection.php'
                         foreach($query_run as $row){
                           ?>
                           <tr>
-                            <td><?= $row["jobt"];?></td>
-                            <td><?= $row["jobs"];?></td>
-                            <td><?= $row["sal"];?></td>
+                            <td><?= $row["jobtitle"];?></td>
+                            <td><?= $row["jobprofile"];?></td>
+                            <td><?= $row["salary"];?></td>
                             <td><?= $row["date"];?></td>
                           </tr>
                         <?php
