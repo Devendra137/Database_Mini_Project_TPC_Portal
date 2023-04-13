@@ -20,11 +20,11 @@ session_start();
       <br>
       <!-- <h1 class="mt-4">This is company page</h1> -->
         <div class="col-md-12">
-             Hello, <?php echo $_SESSION['id'] ?>.
              Hello, <?php echo $_SESSION["id"] ?>.
         </div>
       </div>
     </div>
+
 
 </body>
 </html>
