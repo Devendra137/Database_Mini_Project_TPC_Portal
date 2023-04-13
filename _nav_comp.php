@@ -16,6 +16,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="company_signup.php">Signup</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="newrole.php">Add role</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="roles.php">All roles</a>
+            </li>
             <!-- <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>
         </li> -->

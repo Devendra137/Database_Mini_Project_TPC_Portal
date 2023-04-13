@@ -18,7 +18,11 @@
                 <a class="nav-link" href="announcements.php">Announcements</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="view_job_listings.php">View Job Listings</a>
+                <a class="nav-link" href="data_ret.php">View Job Listings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="eligible.php">Eligible Jobs</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout</a>
             </li>
