@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // TODO: validate email
         // $exists = false;
         if ($pwd == $cpwd) {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO companies (name, email, password, description, phone, email, website, rep_name, rep_phone, rep_email) VALUES ('$name', '$email', '$hash', '$description', '$phone', '$email', '$website', '$rep_name', '$rep_phone', '$rep_email')";
+            $hash = password_hash($pwd, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO companies (name, email, password, description, phone, website, rep_name, rep_phone, rep_email) VALUES ('$name', '$email', '$hash', '$description', '$phone', '$website', '$rep_name', '$rep_phone', '$rep_email')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $showAlert = true;
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php require '_nav.php' ?>
+    <?php require '_nav_comp.html' ?>
     <?php
     if ($showAlert) {
         echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -84,8 +84,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-4">
-        <h1 class="text-center">Company Signup</h1>
-        <form action="signup.php" method="post">
+      <br>
+        <h1 class="text-center">Company Signup</h3>
+          <br>
+          <br>
+        <form action="company_signup.php" method="post">
+          <h3 class="text-center">Company Details</h3>
+          <br>
             <div class="form row">
                 <div class="form-group col-md-12 ">
                     <label for="name">Company Name(as in documents)</label>
@@ -108,73 +113,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="email">Company Email Address</label>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="age">Company Phone</label>
-                    <input type="number" class="form-control" id="age" name="age">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="batchyear">Batch Year</label>
-                    <input type="number" class="form-control" id="batchyear" name="batchyear">
+                <div class="form-group col-md-6">
+                    <label for="phone">Company Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone">
                 </div>
             </div>
             <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="spec">Specialization</label>
-                    <input type="text" class="form-control" id="spec" name="spec">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="aoi">Area of Interest</label>
-                    <input type="text" class="form-control" id="aoi" name="aoi">
+                <div class="form-group col-md-12">
+                    <label for="website">Company Website</label>
+                    <input type="text" class="form-control" id="website" name="website">
                 </div>
             </div>
-            <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="class10">Class 10 marks</label>
-                    <input type="decimal" class="form-control" id="class10" name="class10">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="class12">Class 12 marks</label>
-                    <input type="decimal" class="form-control" id="class12" name="class12">
-                </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-3">
-                    <label for="sem1">Sem1 spi</label>
-                    <input type="decimal" class="form-control" id="sem1" name="sem1">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem2">Sem2 spi</label>
-                    <input type="decimal" class="form-control" id="sem2" name="sem2">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem3">Sem3 spi</label>
-                    <input type="decimal" class="form-control" id="sem3" name="sem3">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem4">Sem4 spi</label>
-                    <input type="decimal" class="form-control" id="sem4" name="sem4">
-                </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-3">
-                    <label for="sem5">Sem5 spi</label>
-                    <input type="decimal" class="form-control" id="sem5" name="sem5">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem6">Sem6 spi</label>
-                    <input type="decimal" class="form-control" id="sem6" name="sem6">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem7">Sem7 spi</label>
-                    <input type="decimal" class="form-control" id="sem7" name="sem7">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem8">Sem8 spi</label>
-                    <input type="decimal" class="form-control" id="sem8" name="sem8">
-                </div>
+            <div class = "form-group col-md-12">
+              <label for="description"> Company Description </label>
+              <input type="text" class = "form-control" id="description" name="description">
             </div>
 
-            <button type="submit" class="btn btn-primary">SignUp</button>
+            <br>
+            <br>
+
+            <h3 class="text-center">Representative Details</h3>
+            <br>
+            <div class="form row">
+              <div class="form-group col-md-6">
+                <label for="rep_name">Representative Name</label>
+                <input type="text" class="form-control" id="rep_name" name="rep_name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="rep_phone">Representative Phone</label>
+                <input type="text" class="form-control" id="rep_phone" name="rep_phone">
+              </div>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="rep_email">Representative Email</label>
+              <input type="text" class="form-control" id="rep_email" name="rep_email">
+            </div>
+
+            <center><button type="submit" class="btn btn-primary">SignUp</button></center>
         </form>
     </div>
 

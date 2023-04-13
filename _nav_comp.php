@@ -11,10 +11,10 @@
                 <a class="nav-link" href="welcome.php">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.php">Login </a>
+                <a class="nav-link" href="company_login.php">Login </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="signup.php">Signup</a>
+                <a class="nav-link" href="company_signup.php">Signup</a>
             </li>
             <!-- <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>

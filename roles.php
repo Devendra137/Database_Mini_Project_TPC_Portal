@@ -14,14 +14,14 @@ include 'connection.php'
     <title>Hello</title>
 </head>
 <body>
-<?php require '_nav.php' ?>
+<?php require '_nav_in.php' ?>
     <div class="container-fluid px-4">
       <br>
       <!-- <h1 class="mt-4">This is company page</h1> -->
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>ALL JOBS</h3>
+                    <h3><center>ALL ROLES BY THE COMPANY<center></h3>
                 </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -30,16 +30,13 @@ include 'connection.php'
                     <tr>
                       <th scope="col">Job title</th>
                       <th scope="col">Job status</th>
-                      <th scope="col">Company</th>
                       <th scope="col">Salary</th>
-                      <th scope="col">Class10</th>
-                      <th scope="col">Class12</th>
-                      <th scope="col">Sem6</th>
+                      <th scope="col">Last Date</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                      $query = "select * from jobs";
+                      $query = "select * from company2";
                       $query_run = mysqli_query($conn,$query);
                       if(mysqli_num_rows($query_run)>0){
                         foreach($query_run as $row){
@@ -47,11 +44,8 @@ include 'connection.php'
                           <tr>
                             <td><?= $row["jobt"];?></td>
                             <td><?= $row["jobs"];?></td>
-                            <td><?= $row["comp"];?></td>
                             <td><?= $row["sal"];?></td>
-                            <td><?= $row["class10"];?></td>
-                            <td><?= $row["class12"];?></td>
-                            <td><?= $row["sem6"];?></td>
+                            <td><?= $row["date"];?></td>
                           </tr>
                         <?php
                         }
@@ -66,11 +60,6 @@ include 'connection.php'
                         ?>
                   </tbody>
               </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-</body>
-</html>
+            </body>
+            </html>
