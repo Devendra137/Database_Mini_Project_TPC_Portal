@@ -29,7 +29,7 @@ include 'connection.php'
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">Job title</th>
-                      <th scope="col">Job status</th>
+                      <th scope="col">Job profile</th>
                       <th scope="col">Company</th>
                       <th scope="col">Salary</th>
                       <th scope="col">Class10</th>
@@ -39,16 +39,16 @@ include 'connection.php'
                   </thead>
                   <tbody>
                     <?php
-                      $query = "select * from jobs";
+                      $query = "select * from company2 join companies on company2.id=companies.id;";
                       $query_run = mysqli_query($conn,$query);
                       if(mysqli_num_rows($query_run)>0){
                         foreach($query_run as $row){
                           ?>
                           <tr>
-                            <td><?= $row["jobt"];?></td>
-                            <td><?= $row["jobs"];?></td>
-                            <td><?= $row["comp"];?></td>
-                            <td><?= $row["sal"];?></td>
+                            <td><?= $row["jobtitle"];?></td>
+                            <td><?= $row["jobprofile"];?></td>
+                            <td><?= $row["name"];?></td>
+                            <td><?= $row["salary"];?></td>
                             <td><?= $row["class10"];?></td>
                             <td><?= $row["class12"];?></td>
                             <td><?= $row["sem6"];?></td>
