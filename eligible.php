@@ -83,7 +83,7 @@ $GLOBALS['sem8'] = $details['sem8'];
                             <td><?= $row["class12"];?></td>
                             <td><?= $row["sem6"];?></td>
                             <td><form id="myForm" action="submit.php" method="post" target="_blank"><button type="submit" class="btn btn-primary" id="submitBtn">Apply</button></form></td>
-                            
+
                           </tr>
                         <?php
                         }

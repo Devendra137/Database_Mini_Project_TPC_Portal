@@ -1,30 +1,9 @@
 <?php
-$showAlert = false;
-$showError = false;
-session_start();
+include 'connection.php'
 
-$rollno = $_SESSION['rollno'];
-
-include "connection.php";
-
-$details = mysqli_fetch_assoc($conn->query("select * from students where rollno='$rollno'"));
-
-$GLOBALS['username'] = $details["username"];
-$GLOBALS['email'] = $details["email"];
-$GLOBALS['age'] = $details["age"];
-$GLOBALS['batchyear'] = $details["batchyear"];
-$GLOBALS['spec'] = $details["spec"];
-$GLOBALS['aoi'] = $details["aoi"];
-$GLOBALS['class10'] = $details["class10"];
-$GLOBALS['class12'] = $details["class12"];
-$GLOBALS['sem1'] = $details["sem1"];
-$GLOBALS['sem2'] = $details["sem2"];
-$GLOBALS['sem3'] = $details["sem3"];
-$GLOBALS['sem4'] = $details['sem4'];
-$GLOBALS['sem5'] = $details['sem5'];
-$GLOBALS['sem6'] = $details['sem6'];
-$GLOBALS['sem7'] = $details['sem7'];
-$GLOBALS['sem8'] = $details['sem8'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $GLOBALS['company'] = $_POST["company"];
+}
 ?>
 
 <!doctype html>
@@ -36,41 +15,62 @@ $GLOBALS['sem8'] = $details['sem8'];
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Statistics</title>
+    <title>Hello</title>
 </head>
-
 <body>
-    <?php require '_nav_in.php' ?>
-    <?php
-    if ($showAlert) {
-        echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> Your account is now created and you can login
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div> ';
-    }
-    if ($showError) {
-        echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error!</strong> ' . $showError . '
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div> ';
-    }
-    ?>
+<?php require '_nav_in.php' ?>
+    <div class="container-fluid px-4">
+      <br>
+      <!-- <h1 class="mt-4">This is company page</h1> -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Year-wise Placement Statistics</h3>
+                </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                <table class="table table-striped table-light">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Year</th>
+                      <th scope="col">Number of Students hired</th>
+                      <th scope="col">Max CTC</th>
+                      <th scope="col">Min CTC</th>
+                      <th scope="col">Average CTC</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      $query = "select year, count(rollno), max(ctc), min(ctc), avg(ctc) from prev_years where company_name='$GLOBALS['company']' group by company_name;";
+                      $query_run = mysqli_query($conn,$query);
+                      if(mysqli_num_rows($query_run)>0){
+                        foreach($query_run as $row){
+                          ?>
+                          <tr>
+                            <td><?= $row["year"];?></td>
+                            <td><?= $row["count(rollno)"];?></td>
+                            <td><?= $row["max(ctc)"];?></td>
+                            <td><?= $row["min(ctc)"];?></td>
+                            <td><?= $row["avg(ctc)"];?></td>
+                          </tr>
+                        <?php
+                        }
+                      }
+                      else{
+                        ?>
+                        <tr>
+                          <td colspan="4">No record found</td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
 </body>
-
 </html>
