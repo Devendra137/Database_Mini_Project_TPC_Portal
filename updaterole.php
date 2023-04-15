@@ -6,10 +6,15 @@ session_start();
 
 $id = $_SESSION['id'];
 $name = $_SESSION['name'];
+$GLOBALS["role_id"] = $_GET["role_id"];
+$role_id = $GLOBALS['role_id'];
+
+
+
 
 include "connection.php";
 
-$details = mysqli_fetch_assoc($conn->query("select * from company2 where id='$id'"));
+$details = mysqli_fetch_assoc($conn->query("select * from company2 where id='$id' and role_id = '$role_id'"));
 
 $GLOBALS['name'] = $name;
 $GLOBALS['email'] = $details["email"];
@@ -23,13 +28,14 @@ $GLOBALS["class10"] = $details["class10"];
 $GLOBALS["class12"] = $details["class12"];
 $GLOBALS["sem6"] = $details["sem6"];
 
+$GLOBALS['id'] = $id;
+
 // $GLOBALS['description'] = $details["description"];
 // $GLOBALS['phone'] = $details["phone"];
 // $GLOBALS['website'] = $details["website"];
 // $GLOBALS['rep_name'] = $details["rep_name"];
 // $GLOBALS['rep_phone'] = $details["rep_phone"];
 // $GLOBALS['rep_email'] = $details["rep_email"];
-$GLOBALS['id'] = $id;
 ?>
 <?php
 
@@ -43,8 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $salary = $_POST["salary"];
     $skill = $_POST["skill"];
     $date = $_POST["date"];
-    // $spec = $_POST["spec"];
-    // $aoi = $_POST["aoi"];
+
     $class10 = $_POST["class10"];
     $class12 = $_POST["class12"];
     // $sem1 = $_POST["sem1"];

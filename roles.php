@@ -60,7 +60,7 @@ include 'connection.php'
                       <td>
                         <?= $row["date"]; ?>
                       </td>
-                      <td><a href="updaterole.php" class="btn btn-dark">Update</a>
+                      <td><a href="updaterole.php?role_id=<?= $row["role_id"]; ?>" class="btn btn-dark">Update</a>
                         <a href="#" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
