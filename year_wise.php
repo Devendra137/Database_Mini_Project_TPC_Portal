@@ -1,8 +1,12 @@
 <?php
-include 'connection.php'
+
+session_start();
+
+include 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $GLOBALS['company'] = $_POST["company"];
+    $company = $_POST["company"];
+    $GLOBALS['company'] = $company;
 }
 ?>
 
@@ -33,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">Year</th>
+                      <th scope="col">Job Title</th>
                       <th scope="col">Number of Students hired</th>
                       <th scope="col">Max CTC</th>
                       <th scope="col">Min CTC</th>
@@ -41,13 +46,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </thead>
                   <tbody>
                     <?php
-                      $query = "select year, count(rollno), max(ctc), min(ctc), avg(ctc) from prev_years where company_name='$GLOBALS['company']' group by company_name;";
+                      $company = $GLOBALS['company'];
+                      $query = "select year, job_title, concat(job_title, '_', year) as identifier, count(rollno), max(ctc), min(ctc), avg(ctc) from recruited where company_name='$company' group by (identifier);";
                       $query_run = mysqli_query($conn,$query);
                       if(mysqli_num_rows($query_run)>0){
                         foreach($query_run as $row){
                           ?>
                           <tr>
                             <td><?= $row["year"];?></td>
+                            <td><?= $row["job_title"];?></td>
                             <td><?= $row["count(rollno)"];?></td>
                             <td><?= $row["max(ctc)"];?></td>
                             <td><?= $row["min(ctc)"];?></td>

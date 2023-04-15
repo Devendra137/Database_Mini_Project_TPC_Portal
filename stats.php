@@ -3,28 +3,7 @@ $showAlert = false;
 $showError = false;
 session_start();
 
-$rollno = $_SESSION['rollno'];
-
 include "connection.php";
-
-$details = mysqli_fetch_assoc($conn->query("select * from students where rollno='$rollno'"));
-
-$GLOBALS['username'] = $details["username"];
-$GLOBALS['email'] = $details["email"];
-$GLOBALS['age'] = $details["age"];
-$GLOBALS['batchyear'] = $details["batchyear"];
-$GLOBALS['spec'] = $details["spec"];
-$GLOBALS['aoi'] = $details["aoi"];
-$GLOBALS['class10'] = $details["class10"];
-$GLOBALS['class12'] = $details["class12"];
-$GLOBALS['sem1'] = $details["sem1"];
-$GLOBALS['sem2'] = $details["sem2"];
-$GLOBALS['sem3'] = $details["sem3"];
-$GLOBALS['sem4'] = $details['sem4'];
-$GLOBALS['sem5'] = $details['sem5'];
-$GLOBALS['sem6'] = $details['sem6'];
-$GLOBALS['sem7'] = $details['sem7'];
-$GLOBALS['sem8'] = $details['sem8'];
 ?>
 
 <!doctype html>
@@ -61,13 +40,10 @@ $GLOBALS['sem8'] = $details['sem8'];
     ?>
 
     <div class="container my-4">
-      <form action="year_wise_form.php">
-        <center><button type="submit" class="btn btn-primary">Year-wise Statistics</button></center>
-      </form>
-
-      <form action="company_wise_form.php">
-        <center><button type="submit" class="btn btn-prmiary">Company-wise Statistics</button></center>
-      </form>
+        <center><a href="year_wise_form.php"><button type="submit" class="btn btn-primary">Year-wise Statistics</button></a></center>
+    <br>
+    <br>
+        <center><a href="company_wise_form.php"><button type="submit" class="btn btn-primary">Company-wise Statistics</button></a></center>
     </div>
 
 

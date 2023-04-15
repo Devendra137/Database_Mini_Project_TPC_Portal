@@ -25,6 +25,7 @@ $GLOBALS['sem5'] = $details['sem5'];
 $GLOBALS['sem6'] = $details['sem6'];
 $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
+$GLOBALS['currsem'] = $details['currsem'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -45,8 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sem6 = $_POST["sem6"];
     $sem7 = $_POST["sem7"];
     $sem8 = $_POST["sem8"];
+    $currsem = $_POST["currsem"];
 
-    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', sem8='$sem8' where rollno ='$rollno';");
+    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', sem8='$sem8', currsem = $currsem where rollno ='$rollno';");
+    header("location: viewprofile.php");
 }
 ?>
 

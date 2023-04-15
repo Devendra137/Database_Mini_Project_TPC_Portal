@@ -4,7 +4,6 @@ $showError = false;
 session_start();
 
 include "connection.php";
-}
 ?>
 
 <!doctype html>
