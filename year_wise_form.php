@@ -3,8 +3,6 @@ $showAlert = false;
 $showError = false;
 session_start();
 
-$rollno = $_SESSION['rollno'];
-
 include "connection.php";
 }
 ?>
@@ -18,7 +16,7 @@ include "connection.php";
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>SignUp</title>
+    <title>Year Wise Statistics Form</title>
 </head>
 
 <body>
@@ -44,111 +42,17 @@ include "connection.php";
 
     <div class="container my-4">
         <br><br>
-        <h3>Personal Details</h3><br>
-        <form method="post" action="updateprofile.php">
+        <h3>Year-wise Statistics</h3><br>
+        <form method="post" action="year_wise.php">
             <div class="form row">
-                <div class="form-group col-md-6 ">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp"
-                        value="<?php echo $GLOBALS['username'] ?>">
+                <div class="form-group col-md-12 ">
+                    <label for="company">Company Name</label>
+                    <input type="text" class="form-control" id="company" name="company">
                 </div>
-                <div class="form-group col-md-6 ">
-                    <label for="rollno">Roll Number</label>
-                    <input type="text" class="form-control" id="rollno" name="rollno" aria-describedby="emailHelp"
-                        value="<?php echo $_SESSION['rollno'] ?>" readonly>
-                </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="emailaddress">Email Address</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        value="<?php echo $GLOBALS['email'] ?>" readonly>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="age">Age</label>
-                    <input type="number" class="form-control" id="age" name="age" value="<?php echo $GLOBALS['age'] ?>">
-                </div>
-            </div>
+              </div>
             <br>
             <br>
-            <h3>Academic Details</h3><br>
-            <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="spec">Specialization</label>
-                    <input type="text" class="form-control" id="spec" name="spec" value="<?php echo $GLOBALS['spec'] ?>"
-                        readonly>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="batchyear">Batch Year</label>
-                    <input type="number" class="form-control" id="batchyear" name="batchyear"
-                        value="<?php echo $GLOBALS['batchyear'] ?>" readonly>
-                </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-12">
-                    <label for="aoi">Area(s) of Interest</label>
-                    <input type="text" class="form-control" id="aoi" name="aoi" value="<?php echo $GLOBALS['aoi'] ?>">
-                </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="class10">Class 10 marks</label>
-                    <input type="decimal" class="form-control" id="class10" name="class10"
-                        value="<?php echo $GLOBALS['class10'] ?>">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="class12">Class 12 marks</label>
-                    <input type="decimal" class="form-control" id="class12" name="class12"
-                        value="<?php echo $GLOBALS['class12'] ?>">
-                </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-3">
-                    <label for="sem1">Sem1 SPI</label>
-                    <input type="decimal" class="form-control" id="sem1" name="sem1"
-                        value="<?php echo $GLOBALS['sem1'] ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem2">Sem2 SPI</label>
-                    <input type="decimal" class="form-control" id="sem2" name="sem2"
-                        value="<?php echo $GLOBALS['sem2'] ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem3">Sem3 SPI</label>
-                    <input type="decimal" class="form-control" id="sem3" name="sem3"
-                        value="<?php echo $GLOBALS['sem3'] ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem4">Sem4 SPI</label>
-                    <input type="decimal" class="form-control" id="sem4" name="sem4"
-                        value="<?php echo $GLOBALS['sem4'] ?>">
-                </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-3">
-                    <label for="sem5">Sem5 SPI</label>
-                    <input type="decimal" class="form-control" id="sem5" name="sem5"
-                        value="<?php echo $GLOBALS['sem5'] ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem6">Sem6 SPI</label>
-                    <input type="decimal" class="form-control" id="sem6" name="sem6"
-                        value="<?php echo $GLOBALS['sem6'] ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem7">Sem7 SPI</label>
-                    <input type="decimal" class="form-control" id="sem7" name="sem7"
-                        value="<?php echo $GLOBALS['sem7'] ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem8">Sem8 SPI</label>
-                    <input type="decimal" class="form-control" id="sem8" name="sem8"
-                        value="<?php echo $GLOBALS['sem8'] ?>">
-                </div>
-            </div>
-
-            <br>
-            <center><button type="submit" class="btn btn-primary">Update</button></center>
+            <center><button type="submit" class="btn btn-primary">View Statistics</button></center>
         </form>
     </div>
 

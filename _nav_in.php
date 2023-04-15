@@ -24,6 +24,9 @@
                 <a class="nav-link" href="eligible.php">Eligible Jobs</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="stats.php">Statistics</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout</a>
             </li>
         </ul>

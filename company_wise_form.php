@@ -16,7 +16,7 @@ include "connection.php";
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>SignUp</title>
+    <title>Company Wise Statistics Form</title>
 </head>
 
 <body>
@@ -43,7 +43,7 @@ include "connection.php";
     <div class="container my-4">
         <br><br>
         <h3>Company-wise Statistics</h3><br>
-        <form method="post" action="updateprofile.php">
+        <form method="post" action="company_wise.php">
             <div class="form row">
                 <div class="form-group col-md-12 ">
                     <label for="start_year">Start Year</label>
@@ -60,7 +60,7 @@ include "connection.php";
             </div>
             <br>
             <br>
-            <center><button type="submit" class="btn btn-primary">Update</button></center>
+            <center><button type="submit" class="btn btn-primary">View Statistics</button></center>
         </form>
     </div>
 

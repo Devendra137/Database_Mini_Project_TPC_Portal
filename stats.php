@@ -60,6 +60,16 @@ $GLOBALS['sem8'] = $details['sem8'];
     }
     ?>
 
+    <div class="container my-4">
+      <form action="year_wise_form.php">
+        <center><button type="submit" class="btn btn-primary">Year-wise Statistics</button></center>
+      </form>
+
+      <form action="company_wise_form.php">
+        <center><button type="submit" class="btn btn-prmiary">Company-wise Statistics</button></center>
+      </form>
+    </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
