@@ -25,7 +25,8 @@ $GLOBALS['sem5'] = $details['sem5'];
 $GLOBALS['sem6'] = $details['sem6'];
 $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
-$GLOBALS['currsem'] = $details['currsem'];
+$GLOBALS['currentsem'] = $details['currentsem'];
+$GLOBALS['cpi'] = $details['cpi'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -46,10 +47,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sem6 = $_POST["sem6"];
     $sem7 = $_POST["sem7"];
     $sem8 = $_POST["sem8"];
-    $currsem = $_POST["currsem"];
+    $currentsem = $_POST["currentsem"];
+    $cpi = 0;
+    if($currentsem > 1)
+    $cpi = $cpi + $sem1;
+    if($currentsem > 2)
+    $cpi = $cpi + $sem2;
+    if($currentsem > 3)
+    $cpi = $cpi + $sem3;
+    if($currentsem > 4)
+    $cpi = $cpi + $sem4;
+    if($currentsem > 5)
+    $cpi = $cpi + $sem5;
+    if($currentsem > 6)
+    $cpi = $cpi + $sem6;
+    if($currentsem > 7)
+    $cpi = $cpi + $sem7;
+    if($currentsem > 8)
+    $cpi = $cpi + $sem8;
 
-    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', sem8='$sem8', currsem = $currsem where rollno ='$rollno';");
-    header("location: viewprofile.php");
+    $cpi = $cpi / ($currentsem - 1);
+
+    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', sem8='$sem8', currentsem = $currentsem, cpi = $cpi where rollno ='$rollno';");
+    header("location: updateprofile.php");
 }
 ?>
 
@@ -146,49 +166,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $GLOBALS['class12'] ?>">
                 </div>
             </div>
+            <div class = "form row">
+              <div class = "form-group col-md-4">
+                <label for="currentsem">Current Semester</label>
+                <input type = "number" class="form-control" id="currentsem" name="currentsem"
+                value="<?php echo $GLOBALS['currentsem']?>">
+              </div>
+            </div>
             <div class="form row">
                 <div class="form-group col-md-3">
                     <label for="sem1">Sem1 SPI</label>
                     <input type="decimal" class="form-control" id="sem1" name="sem1"
-                        value="<?php echo $GLOBALS['sem1'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 1){echo $GLOBALS['sem1'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 1){echo ('readonly');}?>>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="sem2">Sem2 SPI</label>
                     <input type="decimal" class="form-control" id="sem2" name="sem2"
-                        value="<?php echo $GLOBALS['sem2'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 2){echo $GLOBALS['sem2'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 2){echo ('readonly');}?>>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="sem3">Sem3 SPI</label>
                     <input type="decimal" class="form-control" id="sem3" name="sem3"
-                        value="<?php echo $GLOBALS['sem3'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 3){echo $GLOBALS['sem3'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 3){echo ('readonly');}?>>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="sem4">Sem4 SPI</label>
                     <input type="decimal" class="form-control" id="sem4" name="sem4"
-                        value="<?php echo $GLOBALS['sem4'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 4){echo $GLOBALS['sem4'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 4){echo ('readonly');}?>>
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-3">
                     <label for="sem5">Sem5 SPI</label>
                     <input type="decimal" class="form-control" id="sem5" name="sem5"
-                        value="<?php echo $GLOBALS['sem5'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 5){echo $GLOBALS['sem5'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 5){echo ('readonly');}?>>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="sem6">Sem6 SPI</label>
                     <input type="decimal" class="form-control" id="sem6" name="sem6"
-                        value="<?php echo $GLOBALS['sem6'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 6){echo $GLOBALS['sem6'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 6){echo ('readonly');}?>>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="sem7">Sem7 SPI</label>
                     <input type="decimal" class="form-control" id="sem7" name="sem7"
-                        value="<?php echo $GLOBALS['sem7'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 7){echo $GLOBALS['sem7'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 7){echo ('readonly');}?>>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="sem8">Sem8 SPI</label>
                     <input type="decimal" class="form-control" id="sem8" name="sem8"
-                        value="<?php echo $GLOBALS['sem8'] ?>">
+                        value="<?php if($GLOBALS['currentsem'] > 8){echo $GLOBALS['sem8'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 8){echo ('readonly');}?>>
                 </div>
+            </div>
+            <div class = "form row">
+              <div class = "form-group col-md-4">
+                <label for="cpi">CPI</label>
+                <input type = "decimal" class="form-control" id="cpi" name="cpi"
+                value="<?php echo $GLOBALS['cpi']?>" readonly>
+              </div>
             </div>
 
             <br>

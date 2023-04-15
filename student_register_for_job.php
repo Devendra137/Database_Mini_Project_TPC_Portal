@@ -28,7 +28,7 @@ $GLOBALS['sem8'] = $details['sem8'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $job_id = $_SESSION['job_id']
+    $job_id = $_SESSION['job_id'];
     $rollno = $_POST["rollno"];
 
     $conn->query("insert into $job_id values ('$rollno');");
