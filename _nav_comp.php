@@ -8,19 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="welcome.php">Home </a>
+                <a class="nav-link" href="welcome_company.php">Home </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="company_login.php">Login </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="company_signup.php">Signup</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="newrole.php">Add role</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="roles.php">All roles</a>
             </li>
             <!-- <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>
