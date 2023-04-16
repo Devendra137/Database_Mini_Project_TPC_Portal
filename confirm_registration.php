@@ -38,15 +38,27 @@ $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
 
 $table_name = $name . "_" . $role_id;
+$existSql = "SELECT * FROM `$table_name` WHERE rollno = '$rollno'";
+$result = mysqli_query($conn, $existSql);
+$numExistRows = mysqli_num_rows($result);
+if ($numExistRows > 0) {
+    // $exists = true;
+    $showError = "User Already Registered";
+    echo "$showError";
+}
+// echo $table_name;
 
-echo $table_name;
+// echo "<br><br>$rollno";
+else {
+    $sql2 = "insert into `$table_name` values('$rollno')";
+    // $result2 = mysqli_query($conn, $sql2);
+    $conn->query($sql2);
+    echo "SUCCESS";
+    echo "<br><br>";
+    echo "REGISTERED";
+}
 
-echo "<br><br>$rollno";
 
-$sql2 = "insert into `$table_name` values('$rollno')";
-// $result2 = mysqli_query($conn, $sql2);
-$conn->query($sql2);
-
-header("location:eligible.php");
+// header("location:eligible.php");
 
 ?>
