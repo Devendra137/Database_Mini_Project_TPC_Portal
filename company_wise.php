@@ -104,7 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 
   <div class="container my-4 ">
-    <a href="piechart2.php"><button type="submit" class="btn btn-primary" name="btn1" style="margin-right:30px">Piechart
+    <a href="piechart2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button
+        type="submit" class="btn btn-primary" name="btn1" style="margin-right:30px">Piechart
         Company
         Wise</button></a>
     <a href="bargraph2.php"><button type="submit" class="btn btn-primary" name="btn2" style="margin-right:30px">Bargraph

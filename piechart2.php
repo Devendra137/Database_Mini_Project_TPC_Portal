@@ -1,6 +1,11 @@
 <?php
-include "connection.php"
-    ?>
+include "connection.php";
+$GLOBALS["start_year"] = $_GET["start_year"];
+$start_year = $GLOBALS['start_year'];
+$GLOBALS["end_year"] = $_GET["end_year"];
+$end_year = $GLOBALS['end_year'];
+
+?>
 <html>
 
 <head>
@@ -12,18 +17,18 @@ include "connection.php"
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Year', 'Total_students'],
+                ['Company', 'Total_students'],
                 <?php
                 // Retrieve data from the "recruited" table
-                $result = $conn->query("SELECT year, COUNT(rollno) AS Total_students FROM recruited GROUP BY year;");
+                $result = $conn->query("select name, count(rollno) AS Total_students from recruited where year >= $start_year and year <= $end_year group by name;");
                 while ($row = $result->fetch_assoc()) {
-                    echo "['" . $row['year'] . "', " . $row['Total_students'] . "],";
+                    echo "['" . $row['name'] . "', " . $row['Total_students'] . "],";
                 }
                 ?>
             ]);
 
             var options = {
-                title: 'Year wise statistics'
+                title: 'Company wise statistics'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));

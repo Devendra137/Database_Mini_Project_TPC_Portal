@@ -147,7 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="container my-4">
-      <a href="piechart.php"><button type="submit" class="btn btn-primary">Piechart Year Wise</button></a>
+      <a href="piechart.php?company=<?= $GLOBALS["company"]; ?>" class="btn btn-primary">Piechart Year
+        Wise</button></a>
       <a href="bargraph.php"><button type="submit" class="btn btn-primary">Bargraph Year Wise</button></a>
       <a href="maxminavg.php"><button type="submit" class="btn btn-primary">CTC Year Wise</button></a>
     </div>

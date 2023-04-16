@@ -1,6 +1,9 @@
 <?php
-include "connection.php"
-    ?>
+include "connection.php";
+$GLOBALS["company"] = $_GET["company"];
+$company = $GLOBALS['company'];
+
+?>
 <html>
 
 <head>
@@ -15,7 +18,7 @@ include "connection.php"
                 ['Year', 'Total_students'],
                 <?php
                 // Retrieve data from the "recruited" table
-                $result = $conn->query("SELECT year, COUNT(rollno) AS Total_students FROM recruited GROUP BY year;");
+                $result = $conn->query("SELECT year, COUNT(rollno) AS Total_students FROM recruited where name='$company' GROUP BY year;");
                 while ($row = $result->fetch_assoc()) {
                     echo "['" . $row['year'] . "', " . $row['Total_students'] . "],";
                 }
