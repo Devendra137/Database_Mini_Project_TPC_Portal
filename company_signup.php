@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php require '_nav_comp.html' ?>
+    <?php require '_nav_comp.php' ?>
     <?php
     if ($showAlert) {
         echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
