@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container my-4">
         <h1 class="text-center">Update Role</h1>
-        <form action="updaterole.php" method="post">
+        <form action="updaterole.php?role_id=<?= $GLOBALS["role_id"]; ?>" method="post">
             <div class="form row">
                 <div class="form-group col-md-6 ">
                     <label for="name">Company name</label>
