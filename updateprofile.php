@@ -39,36 +39,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $aoi = $_POST["aoi"];
     $class10 = $_POST["class10"];
     $class12 = $_POST["class12"];
-    $sem1 = $_POST["sem1"];
-    $sem2 = $_POST["sem2"];
-    $sem3 = $_POST["sem3"];
-    $sem4 = $_POST["sem4"];
-    $sem5 = $_POST["sem5"];
-    $sem6 = $_POST["sem6"];
-    $sem7 = $_POST["sem7"];
-    $sem8 = $_POST["sem8"];
     $currentsem = $_POST["currentsem"];
+    $sem1 = 0;
     $cpi = 0;
     if($currentsem > 1)
-    $cpi = $cpi + $sem1;
+    {
+       $sem1 = $_POST["sem1"];
+       $cpi = $cpi + $sem1;
+    }
+    $sem2 = 0;
     if($currentsem > 2)
-    $cpi = $cpi + $sem2;
+    {
+      $sem2 = $_POST["sem2"];
+      $cpi = $cpi + $sem2;
+    }
+    $sem3 = 0;
     if($currentsem > 3)
-    $cpi = $cpi + $sem3;
+    {
+      $sem3 = $_POST["sem3"];
+      $cpi = $cpi + $sem3;
+    }
+    $sem4 = 0;
     if($currentsem > 4)
-    $cpi = $cpi + $sem4;
+    {
+      $sem4 = $_POST["sem4"];
+      $cpi = $cpi + $sem4;
+    }
+    $sem5 = 0;
     if($currentsem > 5)
-    $cpi = $cpi + $sem5;
+    {
+      $sem5 = $_POST["sem5"];
+      $cpi = $cpi + $sem5;
+    }
+    $sem6 = 0;
     if($currentsem > 6)
-    $cpi = $cpi + $sem6;
+    {
+      $sem6 = $_POST["sem6"];
+      $cpi = $cpi + $sem6;
+    }
+    $sem7 = 0;
     if($currentsem > 7)
-    $cpi = $cpi + $sem7;
-    if($currentsem > 8)
-    $cpi = $cpi + $sem8;
+    {
+      $sem7 = $_POST["sem7"];
+      $cpi = $cpi + $sem7;
+    }
 
-    $cpi = $cpi / ($currentsem - 1);
+    if($currentsem > 1)
+    {
+      $cpi = $cpi / ($currentsem - 1);
+    }
 
-    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', sem8='$sem8', currentsem = $currentsem, cpi = $cpi where rollno ='$rollno';");
+    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', currentsem = $currentsem, cpi = $cpi where rollno ='$rollno';");
     header("location: updateprofile.php");
 }
 ?>
@@ -175,54 +196,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form row">
                 <div class="form-group col-md-3">
-                    <label for="sem1">Sem1 SPI</label>
+                    <label for="sem1">Semester 1 SPI</label>
                     <input type="decimal" class="form-control" id="sem1" name="sem1"
-                        value="<?php if($GLOBALS['currentsem'] > 1){echo $GLOBALS['sem1'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 1){echo ('readonly');}?>>
+                        value="<?php if($GLOBALS['currentsem'] > 1){echo $GLOBALS['sem1'];} ?>" >
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem2">Sem2 SPI</label>
+                    <label for="sem2">Semester 2 SPI</label>
                     <input type="decimal" class="form-control" id="sem2" name="sem2"
-                        value="<?php if($GLOBALS['currentsem'] > 2){echo $GLOBALS['sem2'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 2){echo ('readonly');}?>>
+                        value="<?php if($GLOBALS['currentsem'] > 2){echo $GLOBALS['sem2'];} ?>" >
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem3">Sem3 SPI</label>
+                    <label for="sem3">Semester 3 SPI</label>
                     <input type="decimal" class="form-control" id="sem3" name="sem3"
-                        value="<?php if($GLOBALS['currentsem'] > 3){echo $GLOBALS['sem3'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 3){echo ('readonly');}?>>
+                        value="<?php if($GLOBALS['currentsem'] > 3){echo $GLOBALS['sem3'];} ?>" >
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem4">Sem4 SPI</label>
+                    <label for="sem4">Semester 4 SPI</label>
                     <input type="decimal" class="form-control" id="sem4" name="sem4"
-                        value="<?php if($GLOBALS['currentsem'] > 4){echo $GLOBALS['sem4'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 4){echo ('readonly');}?>>
+                        value="<?php if($GLOBALS['currentsem'] > 4){echo $GLOBALS['sem4'];} ?>" >
                 </div>
             </div>
             <div class="form row">
-                <div class="form-group col-md-3">
-                    <label for="sem5">Sem5 SPI</label>
+                <div class="form-group col-md-4">
+                    <label for="sem5">Semester 5 SPI</label>
                     <input type="decimal" class="form-control" id="sem5" name="sem5"
-                        value="<?php if($GLOBALS['currentsem'] > 5){echo $GLOBALS['sem5'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 5){echo ('readonly');}?>>
+                        value="<?php if($GLOBALS['currentsem'] > 5){echo $GLOBALS['sem5'];} ?>" >
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="sem6">Sem6 SPI</label>
+                <div class="form-group col-md-4">
+                    <label for="sem6">Semester 6 SPI</label>
                     <input type="decimal" class="form-control" id="sem6" name="sem6"
-                        value="<?php if($GLOBALS['currentsem'] > 6){echo $GLOBALS['sem6'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 6){echo ('readonly');}?>>
+                        value="<?php if($GLOBALS['currentsem'] > 6){echo $GLOBALS['sem6'];} ?>" >
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="sem7">Sem7 SPI</label>
+                <div class="form-group col-md-4">
+                    <label for="sem7">Semester 7 SPI</label>
                     <input type="decimal" class="form-control" id="sem7" name="sem7"
-                        value="<?php if($GLOBALS['currentsem'] > 7){echo $GLOBALS['sem7'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 7){echo ('readonly');}?>>
+                        value="<?php if($GLOBALS['currentsem'] > 7){echo $GLOBALS['sem7'];} ?>" >
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="sem8">Sem8 SPI</label>
-                    <input type="decimal" class="form-control" id="sem8" name="sem8"
-                        value="<?php if($GLOBALS['currentsem'] > 8){echo $GLOBALS['sem8'];}else {echo 0;} ?>" <?php if($GLOBALS['currentsem'] <= 8){echo ('readonly');}?>>
-                </div>
-            </div>
-            <div class = "form row">
-              <div class = "form-group col-md-4">
-                <label for="cpi">CPI</label>
-                <input type = "decimal" class="form-control" id="cpi" name="cpi"
-                value="<?php echo $GLOBALS['cpi']?>" readonly>
-              </div>
             </div>
 
             <br>

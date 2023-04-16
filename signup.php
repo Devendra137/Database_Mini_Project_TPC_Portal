@@ -14,14 +14,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $aoi = $_POST["aoi"];
     $class10 = $_POST["class10"];
     $class12 = $_POST["class12"];
-    $sem1 = $_POST["sem1"];
-    $sem2 = $_POST["sem2"];
-    $sem3 = $_POST["sem3"];
-    $sem4 = $_POST["sem4"];
-    $sem5 = $_POST["sem5"];
-    $sem6 = $_POST["sem6"];
-    $sem7 = $_POST["sem7"];
-    $sem8 = $_POST["sem8"];
+    $currentsem = $_POST["currentsem"];
+    $sem1 = 0;
+    $cpi = 0;
+    if($currentsem > 1)
+    {
+       $sem1 = $_POST["sem1"];
+       $cpi = $cpi + $sem1;
+    }
+    $sem2 = 0;
+    if($currentsem > 2)
+    {
+      $sem2 = $_POST["sem2"];
+      $cpi = $cpi + $sem2;
+    }
+    $sem3 = 0;
+    if($currentsem > 3)
+    {
+      $sem3 = $_POST["sem3"];
+      $cpi = $cpi + $sem3;
+    }
+    $sem4 = 0;
+    if($currentsem > 4)
+    {
+      $sem4 = $_POST["sem4"];
+      $cpi = $cpi + $sem4;
+    }
+    $sem5 = 0;
+    if($currentsem > 5)
+    {
+      $sem5 = $_POST["sem5"];
+      $cpi = $cpi + $sem5;
+    }
+    $sem6 = 0;
+    if($currentsem > 6)
+    {
+      $sem6 = $_POST["sem6"];
+      $cpi = $cpi + $sem6;
+    }
+    $sem7 = 0;
+    if($currentsem > 7)
+    {
+      $sem7 = $_POST["sem7"];
+      $cpi = $cpi + $sem7;
+    }
+
+    if($currentsem > 1)
+    {
+      $cpi = $cpi / ($currentsem - 1);
+    }
 
     function endsWith($string, $smol)
     {
@@ -48,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $exists = false;
         if (($password == $cpassword) && endsWith($email, '@iitp.ac.in')) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `students` ( `username`, `password`, `email`,`rollno`,`age`,`batchyear`,`spec`,`aoi`,`class10`,`class12`,`sem1`,`sem2`,`sem3`,`sem4`,`sem5`,`sem6`,`sem7`,`sem8`) VALUES ('$username', '$hash', '$email','$rollno','$age','$batchyear','$spec','$aoi','$class10','$class12','$sem1','$sem2','$sem3','$sem4','$sem5','$sem6','$sem7','$sem8')";
+            $sql = "INSERT INTO `students` ( `username`, `password`, `email`,`rollno`,`age`,`batchyear`,`spec`,`aoi`,`class10`,`class12`,`currentsem`, `sem1`,`sem2`,`sem3`,`sem4`,`sem5`,`sem6`,`sem7`) VALUES ('$username', '$hash', '$email','$rollno','$age','$batchyear','$spec','$aoi','$class10','$class12', '$currentsem', '$sem1','$sem2','$sem3','$sem4','$sem5','$sem6','$sem7')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $showAlert = true;
@@ -154,40 +195,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="decimal" class="form-control" id="class12" name="class12">
                 </div>
             </div>
+            <div class = "form row">
+              <div class = "form-group col-md-4">
+                <label for="currentsem">Current Semester</label>
+                <input type = "number" class="form-control" id="currentsem" name="currentsem"
+                value="<?php echo $GLOBALS['currentsem']?>">
+              </div>
+            </div>
             <div class="form row">
                 <div class="form-group col-md-3">
-                    <label for="sem1">Sem1 spi</label>
+                    <label for="sem1">Semester 1 spi</label>
                     <input type="decimal" class="form-control" id="sem1" name="sem1">
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem2">Sem2 spi</label>
+                    <label for="sem2">Semester 2 spi</label>
                     <input type="decimal" class="form-control" id="sem2" name="sem2">
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem3">Sem3 spi</label>
+                    <label for="sem3">Semester 3 spi</label>
                     <input type="decimal" class="form-control" id="sem3" name="sem3">
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem4">Sem4 spi</label>
+                    <label for="sem4">Semester 4 spi</label>
                     <input type="decimal" class="form-control" id="sem4" name="sem4">
                 </div>
             </div>
             <div class="form row">
-                <div class="form-group col-md-3">
-                    <label for="sem5">Sem5 spi</label>
+                <div class="form-group col-md-4">
+                    <label for="sem5">Semester 5 spi</label>
                     <input type="decimal" class="form-control" id="sem5" name="sem5">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="sem6">Sem6 spi</label>
+                <div class="form-group col-md-4">
+                    <label for="sem6">Semester 6 spi</label>
                     <input type="decimal" class="form-control" id="sem6" name="sem6">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="sem7">Sem7 spi</label>
+                <div class="form-group col-md-4">
+                    <label for="sem7">Semester 7 spi</label>
                     <input type="decimal" class="form-control" id="sem7" name="sem7">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem8">Sem8 spi</label>
-                    <input type="decimal" class="form-control" id="sem8" name="sem8">
                 </div>
             </div>
 

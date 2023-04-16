@@ -133,46 +133,41 @@ $GLOBALS['cpi'] = $details['cpi'];
             </div>
             <div class="form row">
                 <div class="form-group col-md-3">
-                    <label for="sem1">Sem1 SPI</label>
+                    <label for="sem1">Semester 1 SPI</label>
                     <input type="decimal" class="form-control" id="sem1" name="sem1"
                         value="<?php echo $GLOBALS['sem1'] ?>" readonly>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem2">Sem2 SPI</label>
+                    <label for="sem2">Semester 2 SPI</label>
                     <input type="decimal" class="form-control" id="sem2" name="sem2"
                         value="<?php echo $GLOBALS['sem2'] ?>" readonly>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem3">Sem3 SPI</label>
+                    <label for="sem3">Semester 3 SPI</label>
                     <input type="decimal" class="form-control" id="sem3" name="sem3"
                         value="<?php echo $GLOBALS['sem3'] ?>" readonly>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="sem4">Sem4 SPI</label>
+                    <label for="sem4">Semester 4 SPI</label>
                     <input type="decimal" class="form-control" id="sem4" name="sem4"
                         value="<?php echo $GLOBALS['sem4'] ?>" readonly>
                 </div>
             </div>
             <div class="form row">
-                <div class="form-group col-md-3">
-                    <label for="sem5">Sem5 SPI</label>
+                <div class="form-group col-md-4">
+                    <label for="sem5">Semester 5 SPI</label>
                     <input type="decimal" class="form-control" id="sem5" name="sem5"
                         value="<?php echo $GLOBALS['sem5'] ?>" readonly>
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="sem6">Sem6 SPI</label>
+                <div class="form-group col-md-4">
+                    <label for="sem6">Semester 6 SPI</label>
                     <input type="decimal" class="form-control" id="sem6" name="sem6"
                         value="<?php echo $GLOBALS['sem6'] ?>" readonly>
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="sem7">Sem7 SPI</label>
+                <div class="form-group col-md-4">
+                    <label for="sem7">Semester 7 SPI</label>
                     <input type="decimal" class="form-control" id="sem7" name="sem7"
                         value="<?php echo $GLOBALS['sem7'] ?>" readonly>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sem8">Sem8 SPI</label>
-                    <input type="decimal" class="form-control" id="sem8" name="sem8"
-                        value="<?php echo $GLOBALS['sem8'] ?>" readonly>
                 </div>
             </div>
             <div class = "form row">
