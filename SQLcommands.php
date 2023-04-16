@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Direct SQL commands</title>
 </head>
 <body>
-<?php require '_nav_in.php' ?>
+<?php require '_nav_in_admin.php' ?>
     <div class="container-fluid px-4">
       <br>
       <!-- <h1 class="mt-4">This is company page</h1> -->
