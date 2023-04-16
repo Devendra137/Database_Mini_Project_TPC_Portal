@@ -25,6 +25,8 @@ $GLOBALS['sem5'] = $details['sem5'];
 $GLOBALS['sem6'] = $details['sem6'];
 $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
+$GLOBALS['currentsem'] = $details['currentsem'];
+$GLOBALS['cpi'] = $details['cpi'];
 ?>
 
 <!doctype html>
@@ -122,6 +124,13 @@ $GLOBALS['sem8'] = $details['sem8'];
                         value="<?php echo $GLOBALS['class12'] ?>" readonly>
                 </div>
             </div>
+            <div class = "form row">
+              <div class = "form-group col-md-4">
+                <label for="currentsem">Current Semester</label>
+                <input type = "number" class="form-control" id="currentsem" name="currentsem"
+                value="<?php echo $GLOBALS['currentsem']?>" readonly>
+              </div>
+            </div>
             <div class="form row">
                 <div class="form-group col-md-3">
                     <label for="sem1">Sem1 SPI</label>
@@ -165,6 +174,13 @@ $GLOBALS['sem8'] = $details['sem8'];
                     <input type="decimal" class="form-control" id="sem8" name="sem8"
                         value="<?php echo $GLOBALS['sem8'] ?>" readonly>
                 </div>
+            </div>
+            <div class = "form row">
+              <div class = "form-group col-md-4">
+                <label for="cpi">CPI</label>
+                <input type = "decimal" class="form-control" id="cpi" name="cpi"
+                value="<?php echo $GLOBALS['cpi']?>" readonly>
+              </div>
             </div>
         </form>
     </div>
