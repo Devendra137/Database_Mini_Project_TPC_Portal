@@ -108,10 +108,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         type="submit" class="btn btn-primary" name="btn1" style="margin-right:30px">Piechart
         Company
         Wise</button></a>
-    <a href="bargraph2.php"><button type="submit" class="btn btn-primary" name="btn2" style="margin-right:30px">Bargraph
+    <a href="bargraph2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button type="submit" class="btn btn-primary" name="btn2" style="margin-right:30px">Bargraph
         Company
         Wise</button></a>
-    <a href="maxminavg2.php"><button type="submit" class="btn btn-primary" name="btn3">CTC Company
+    <a href="maxminavg2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button type="submit" class="btn btn-primary" name="btn3">CTC Company
         Wise</button></a>
   </div>
 

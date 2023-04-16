@@ -1,9 +1,11 @@
 <?php
 // Include connection.php for database connection
 include "connection.php";
-
+$GLOBALS["company"] = $_GET["company"];
+$company = $GLOBALS['company'];
 // Query to retrieve data from recruited table
-$result = $conn->query("SELECT year, COUNT(rollno) AS Total_students FROM recruited GROUP BY year");
+
+$result = $conn->query("SELECT year, COUNT(rollno) AS Total_students FROM recruited where name='$company' GROUP BY year;");
 
 // Initialize an empty array to store dataPointsa
 $dataPoints = array();
@@ -23,7 +25,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
-        window.onload = function() {
+        window.onload = function () {
 
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
