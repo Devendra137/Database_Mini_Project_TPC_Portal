@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // $sql = "Select * from users where username='$username' AND password='$password'";
-    $sql = "Select * from companies where email='$email'";
+    $sql = "Select * from alumni where email='$email'";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     if ($num == 1) {
@@ -17,8 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $login = true;
                 session_start();
                 $_SESSION['loggedin'] = true;
-                $_SESSION['id'] = $row['id'];
-                header("location: company_homepage.php");
+                $_SESSION['email'] = $email;
+                $_SESSION['fname'] = $fname;
+                header("location: alumni_viewprofile.php");
             } else {
                 $showError = "Invalid Credentials";
             }
@@ -65,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style> -->
 
 <body>
-    <?php require '_nav_comp.php' ?>
+    <?php require '_nav_alumni.php' ?>
     <?php
     if ($login) {
         echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -86,31 +87,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-5">
-      <br>
-        <h1 class="text-center">Company Log In</h1>
-        <br><br>
-        <form action="company_login.php" method="post">
-          <center>
-          <div class = "form-row">
-
-            <div class="form-group col-md-12">
-                <label for="email">Company Email</label>
-                <input type="text" class="form-control" id="email" name="email">
+        <h1 class="text-center">Login to our website</h1>
+        <form action="alumni_login.php" method="post">
+            <div class="form-group col-md-8">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email">
 
             </div>
-
-          </div>
-          <div class = "form-row">
-
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-8">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
             </div>
-
-        </div>
             <br>
-            <button type="submit" class="btn btn-primary">Log In</button>
-          </center>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
 

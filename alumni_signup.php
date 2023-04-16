@@ -3,16 +3,16 @@ $showAlert = false;
 $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connection.php';
-    $name = $_POST["name"];
-    $pwd = $_POST["password"];
-    $cpwd = $_POST["conf_password"];
-    $description = $_POST["description"];
-    $phone = $_POST["phone"];
+    $fname = $_POST["fname"];
     $email = $_POST["email"];
-    $website = $_POST["website"];
-    $rep_name = $_POST["rep_name"];
-    $rep_phone = $_POST["rep_phone"];
-    $rep_email = $_POST["rep_email"];
+    $rollno = $_POST["rollno"];
+    $password = $_POST["password"];
+    $cpassword = $_POST["cpassword"];
+    $batchof = $_POST["batchof"];
+    $phone = $_POST["phone"];
+    $linkedin = $_POST["linkedin"];
+    $job = $_POST["job"];
+    $company = $_POST["company"];
 
     function endsWith($string, $smol)
     {
@@ -26,23 +26,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Check whether this username exists
-    $existSql = "SELECT * FROM companies WHERE email = '$email'";
+    $existSql = "SELECT * FROM `alumni` WHERE rollno = '$rollno'";
     $result = mysqli_query($conn, $existSql);
     $numExistRows = mysqli_num_rows($result);
     if ($numExistRows > 0) {
         // $exists = true;
-        $showError = "User with given Email Already Exists";
+        $showError = "User Already Exists";
     } else {
-        // TODO: validate email
         // $exists = false;
-        if ($pwd == $cpwd) {
-            $hash = password_hash($pwd, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO companies (name, email, password, description, phone, website, rep_name, rep_phone, rep_email) VALUES ('$name', '$email', '$hash', '$description', '$phone', '$website', '$rep_name', '$rep_phone', '$rep_email')";
+        if (($password == $cpassword)) {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO `alumni` ( `fname`, `password`, `email`,`rollno`,`batchof`,`phone`,`linkedin`,`job`,`company`) VALUES ('$fname', '$hash', '$email','$rollno','$batchof','$phone','$linkedin','$job','$company')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $showAlert = true;
             }
-        } else {
+        }else {
             $showError = "Passwords do not match";
         }
     }
@@ -63,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php require '_nav_comp.php' ?>
+    <?php require '_nav_alumni.php' ?>
     <?php
     if ($showAlert) {
         echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -84,17 +83,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-4">
-      <br>
-        <h1 class="text-center">Company Signup</h3>
-          <br>
-          <br>
-        <form action="company_signup.php" method="post">
-          <h3 class="text-center">Company Details</h3>
-          <br>
+        <h1 class="text-center">Alumni Signup</h1>
+        <form action="alumni_signup.php" method="post">
             <div class="form row">
-                <div class="form-group col-md-12 ">
-                    <label for="name">Company Name(as in documents)</label>
-                    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+                <div class="form-group col-md-6 ">
+                    <label for="fname">Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="rollno">Roll Number</label>
+                    <input type="text" class="form-control" id="rollno" name="rollno" aria-describedby="emailHelp">
                 </div>
             </div>
             <div class="form row">
@@ -103,53 +101,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="conf_password">Confirm Password</label>
-                    <input type="password" class="form-control" id="conf_password" name="conf_password">
+                    <label for="cpassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="cpassword" name="cpassword">
                     <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
-                    <label for="email">Company Email Address</label>
+                    <label for="email">Email Address</label>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="phone">Company Phone</label>
+                    <label for="batchof">Batch Of</label>
+                    <input type="number" class="form-control" id="batchof" name="batchof">
+                </div>
+            </div>
+            <div class="form row">
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone No</label>
                     <input type="text" class="form-control" id="phone" name="phone">
                 </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-12">
-                    <label for="website">Company Website</label>
-                    <input type="text" class="form-control" id="website" name="website">
+                <div class="form-group col-md-6">
+                    <label for="linkedin">LinkedIn Profile</label>
+                    <input type="text" class="form-control" id="linkedin" name="linkedin">
                 </div>
             </div>
-            <div class = "form-group col-md-12">
-              <label for="description"> Company Description </label>
-              <input type="text" class = "form-control" id="description" name="description">
-            </div>
-
-            <br>
-            <br>
-
-            <h3 class="text-center">Representative Details</h3>
-            <br>
             <div class="form row">
-              <div class="form-group col-md-6">
-                <label for="rep_name">Representative Name</label>
-                <input type="text" class="form-control" id="rep_name" name="rep_name">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="rep_phone">Representative Phone</label>
-                <input type="text" class="form-control" id="rep_phone" name="rep_phone">
-              </div>
-            </div>
-            <div class="form-group col-md-12">
-              <label for="rep_email">Representative Email</label>
-              <input type="text" class="form-control" id="rep_email" name="rep_email">
+                <div class="form-group col-md-6">
+                    <label for="job">Job Title</label>
+                    <input type="text" class="form-control" id="job" name="job">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="company">Company</label>
+                    <input type="text" class="form-control" id="company" name="company">
+                </div>
             </div>
 
-            <center><button type="submit" class="btn btn-primary">SignUp</button></center>
+            <button type="submit" class="btn btn-primary">SignUp</button>
         </form>
     </div>
 
