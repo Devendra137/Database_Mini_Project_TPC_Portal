@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company CTC Graph</title>
+    <script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+</head>
+<body>
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+    <script>
+        // Data
+        var companies = ['Company A', 'Company B', 'Company C', 'Company D', 'Company E'];
+        var ctcValues = [1000000, 1200000, 900000, 1100000, 950000];
+
+        // Create chart
+        var ctx = document.getElementById('ctcChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: companies,
+                datasets: [{
+                    label: 'Max CTC (in USD)',
+                    data: ctcValues,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)', // Bar color
+                    borderColor: 'rgba(75, 192, 192, 1)', // Bar border color
+                    borderWidth: 1 // Bar border width
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: Math.max(...ctcValues) + 100000, // Setting y-axis maximum value with some buffer
+                        stepSize: 100000 // Setting y-axis step size
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
