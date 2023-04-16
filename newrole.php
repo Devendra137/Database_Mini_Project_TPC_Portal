@@ -1,4 +1,3 @@
-
 <?php
 
 $showAlert = false;
@@ -26,9 +25,9 @@ $GLOBALS['id'] = $details["id"];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connection.php';
-    $id = $_SESSION["id"];
-
+    // $id = $_SESSION["id"];
     $email = $_POST["email"];
+    // $name = $_SESSION['name'];
     $jobtitle = $_POST["jobtitle"];
     $jobprofile = $_POST["jobprofile"];
     $jobtype = $_POST["jobtype"];
@@ -48,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $sem7 = $_POST["sem7"];
     // $sem8 = $_POST["sem8"];
 
-   
+
 
 
 
@@ -66,11 +65,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     // $exists = false;
     //     if (($password == $cpassword) && endsWith($email, '@iitp.ac.in')) {
     //         $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `company2` ( `id`,`email`, `jobtitle`, `jobprofile`,`jobtype`,`salary`,`skill`,`date`,`class10`,`class12`,`sem6`) VALUES ('$id', '$email', '$jobtitle','$jobprofile','$jobtype','$salary','$skill','$date','$class10','$class12','$sem6')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                $showAlert = true;
-            }
+    $result = ($conn->query('select (max(role_id) + 1) as new_id from company2;'));
+
+    $role_id = 0;
+
+    if (mysqli_num_rows($result)) {
+        $role_id = mysqli_fetch_assoc($result)['new_id'];
+    }
+
+    $sql = "INSERT INTO `company2` ( `role_id`, `id`,`email`, `jobtitle`, `jobprofile`,`jobtype`,`salary`,`skill`,`date`,`class10`,`class12`,`sem6`) VALUES ('$role_id', '$id', '$email', '$jobtitle','$jobprofile','$jobtype','$salary','$skill','$date','$class10','$class12','$sem6')";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $table_name = $name . '_' . $role_id;
+
+        // echo $table_name;
+        $sql2 = "create table $table_name (rollno char(8));";
+        $result2 = mysqli_query($conn, $sql2);
+        if ($result2) {
+            $showAlert = true;
+            // header('location: roles.php');
+        }
+    }
     //     } else if (!endsWith($email, '@iitp.ac.in')) {
     //         $showError = "Enter only IITP email";
     //     } else {
@@ -117,16 +132,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container my-4">
         <h1 class="text-center">Add Role</h1>
         <form action="newrole.php" method="post">
-        <div class="form row">
+            <div class="form row">
                 <div class="form-group col-md-6 ">
                     <label for="name">Company name</label>
                     <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
-                    value="<?php echo $GLOBALS['name'] ?>" readonly>
+                        value="<?php echo $GLOBALS['name'] ?>" readonly>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">Email Address</label>
                     <input type="email" class="form-control" id="email" name="email"
-                    value="<?php echo $GLOBALS['email'] ?>" readonly>
+                        value="<?php echo $GLOBALS['email'] ?>" readonly>
                 </div>
             </div>
             <div class="form row">
@@ -136,51 +151,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="jobprofile">Job Profile</label>
-                    <input type="text" class="form-control" id="jobprofile" name="jobprofile" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" id="jobprofile" name="jobprofile"
+                        aria-describedby="emailHelp">
                 </div>
             </div>
             <div class="form-row">
-            <div class="form-group col-md-6">
+                <div class="form-group col-md-6">
                     <label for="jobtype">Job type</label>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name = "jobtype" id="flexRadioDefault1" value="IT">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        IT
-                    </label>
+                        <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault1" value="IT">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            IT
+                        </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault2" value="Finance">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Finance
-                    </label>
+                        <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault2"
+                            value="Finance">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Finance
+                        </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault3" value="Consulting">
-                    <label class="form-check-label" for="flexRadioDefault3">
-                        Consulting
-                    </label>
+                        <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault3"
+                            value="Consulting">
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Consulting
+                        </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault4" value="E-commerce">
-                    <label class="form-check-label" for="flexRadioDefault4">
-                        E-commerce
-                    </label>
+                        <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault4"
+                            value="E-commerce">
+                        <label class="form-check-label" for="flexRadioDefault4">
+                            E-commerce
+                        </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault5" value="Teaching">
-                    <label class="form-check-label" for="flexRadioDefault5">
-                        Teaching
-                    </label>
+                        <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault5"
+                            value="Teaching">
+                        <label class="form-check-label" for="flexRadioDefault5">
+                            Teaching
+                        </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault6" value="Other">
-                    <label class="form-check-label" for="flexRadioDefault6">
-                        Other
-                    </label>
+                        <input class="form-check-input" type="radio" name="jobtype" id="flexRadioDefault6"
+                            value="Other">
+                        <label class="form-check-label" for="flexRadioDefault6">
+                            Other
+                        </label>
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="form row">
                 <div class="form-group col-md-6">
@@ -212,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" class="form-control" id="sem6" name="sem6">
                 </div>
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Add Role</button>
         </form>
     </div>

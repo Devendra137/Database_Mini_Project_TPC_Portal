@@ -4,6 +4,16 @@ $showError = false;
 session_start();
 
 $rollno = $_SESSION['rollno'];
+$GLOBALS['name'] = $_GET['name'];
+$name = $GLOBALS['name'];
+$GLOBALS['role_id'] = $_GET['role_id'];
+$role_id = $GLOBALS['role_id'];
+// echo $rollno;
+// echo $name;
+// echo $role_id;
+// $table_name = $name . "_" . $role_id;
+// echo $table_name;
+
 
 include "connection.php";
 
@@ -27,12 +37,14 @@ $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $job_id = $_SESSION['job_id']
-    $rollno = $_POST["rollno"];
+// if (mysqli_query($conn, $sql)) {
+//     echo "Table $table_name created successfully";
+// } else {
+//     echo "Error creating table: " . mysqli_error($conn);
+// }
 
-    $conn->query("insert into $job_id values ('$rollno');");
-}
+
+
 ?>
 
 <!doctype html>
@@ -71,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container my-4">
         <br><br>
         <h3>Personal Details</h3><br>
-        <form method="post" action="student_register_for_job.php">
+        <form>
             <div class="form row">
                 <div class="form-group col-md-6 ">
                     <label for="username">Username</label>
@@ -167,7 +179,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $GLOBALS['sem8'] ?>" readonly>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Confirm Registration</button>
+            <a href="confirm_registration.php?role_id=<?= $GLOBALS["role_id"]; ?>&name=<?= $GLOBALS["name"]; ?>"
+                class="btn btn-success">Confirm Registration</button>
+
+
         </form>
     </div>
 

@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     if (($password == $cpassword) && endsWith($email, '@iitp.ac.in')) {
     //         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    $conn->query("update company2 set jobtitle='$jobtitle', jobprofile='$jobprofile', jobtype='$jobtype', salary='$salary', skill='$skill', date='$date', class10='$class10', class12='$class12', sem6='$sem6' where id ='$id';");
+    $conn->query("update company2 set jobtitle='$jobtitle', jobprofile='$jobprofile', jobtype='$jobtype', salary='$salary', skill='$skill', date='$date', class10='$class10', class12='$class12', sem6='$sem6' where role_id='$role_id';");
     //     } else if (!endsWith($email, '@iitp.ac.in')) {
     //         $showError = "Enter only IITP email";
     //     } else {

@@ -26,10 +26,6 @@ $GLOBALS['sem6'] = $details['sem6'];
 $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
 
-
-
-
-
 ?>
 
 <!doctype html>
@@ -105,8 +101,8 @@ $GLOBALS['sem8'] = $details['sem8'];
                         <?= $row["sem6"]; ?>
                       </td>
                       <td>
-                        <form id="myForm" action="student_register_for_job.php" method="post"><button type="submit"
-                            class="btn btn-primary" id="submitBtn">Apply</button></form>
+                        <a href="student_register_for_job.php?role_id=<?= $row["role_id"]; ?>&name=<?= $row["name"]; ?>"
+                          class="btn btn-dark">Apply</a>
                       </td>
                     </tr>
                     <?php
