@@ -61,7 +61,7 @@ include 'connection.php'
                         <?= $row["date"]; ?>
                       </td>
                       <td><a href="updaterole.php?role_id=<?= $row["role_id"]; ?>" class="btn btn-dark">Update</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a href="deleterole.php?role_id=<?= $row["role_id"];?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                     <?php
