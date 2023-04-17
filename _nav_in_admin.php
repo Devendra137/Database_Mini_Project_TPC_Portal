@@ -18,7 +18,7 @@
                 <a class="nav-link" href="announcements_new.php">Make New Announcement</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="announcements.php">View Student Announcements</a>
+                <a class="nav-link" href="announcements_student.php">View Student Announcements</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="admin_logout.php">Logout</a>
