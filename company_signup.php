@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php require '_nav_comp.php' ?>
+    <?php require '_nav_comp_in.php' ?>
     <?php
     if ($showAlert) {
         echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -84,73 +84,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-4">
-      <br>
+        <br>
         <h1 class="text-center">Company Signup</h3>
-          <br>
-          <br>
-        <form action="company_signup.php" method="post">
-          <h3 class="text-center">Company Details</h3>
-          <br>
-            <div class="form row">
-                <div class="form-group col-md-12 ">
-                    <label for="name">Company Name(as in documents)</label>
-                    <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+            <br>
+            <br>
+            <form action="company_signup.php" method="post">
+                <h3 class="text-center">Company Details</h3>
+                <br>
+                <div class="form row">
+                    <div class="form-group col-md-12 ">
+                        <label for="name">Company Name(as in documents)</label>
+                        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+                    </div>
                 </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                <div class="form row">
+                    <div class="form-group col-md-6">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="conf_password">Confirm Password</label>
+                        <input type="password" class="form-control" id="conf_password" name="conf_password">
+                        <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="conf_password">Confirm Password</label>
-                    <input type="password" class="form-control" id="conf_password" name="conf_password">
-                    <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
+                <div class="form row">
+                    <div class="form-group col-md-6">
+                        <label for="email">Company Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone">Company Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
                 </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="email">Company Email Address</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="website">Company Website</label>
+                        <input type="text" class="form-control" id="website" name="website">
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="phone">Company Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone">
-                </div>
-            </div>
-            <div class="form row">
                 <div class="form-group col-md-12">
-                    <label for="website">Company Website</label>
-                    <input type="text" class="form-control" id="website" name="website">
+                    <label for="description"> Company Description </label>
+                    <input type="text" class="form-control" id="description" name="description">
                 </div>
-            </div>
-            <div class = "form-group col-md-12">
-              <label for="description"> Company Description </label>
-              <input type="text" class = "form-control" id="description" name="description">
-            </div>
 
-            <br>
-            <br>
+                <br>
+                <br>
 
-            <h3 class="text-center">Representative Details</h3>
-            <br>
-            <div class="form row">
-              <div class="form-group col-md-6">
-                <label for="rep_name">Representative Name</label>
-                <input type="text" class="form-control" id="rep_name" name="rep_name">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="rep_phone">Representative Phone</label>
-                <input type="text" class="form-control" id="rep_phone" name="rep_phone">
-              </div>
-            </div>
-            <div class="form-group col-md-12">
-              <label for="rep_email">Representative Email</label>
-              <input type="text" class="form-control" id="rep_email" name="rep_email">
-            </div>
+                <h3 class="text-center">Representative Details</h3>
+                <br>
+                <div class="form row">
+                    <div class="form-group col-md-6">
+                        <label for="rep_name">Representative Name</label>
+                        <input type="text" class="form-control" id="rep_name" name="rep_name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="rep_phone">Representative Phone</label>
+                        <input type="text" class="form-control" id="rep_phone" name="rep_phone">
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="rep_email">Representative Email</label>
+                    <input type="text" class="form-control" id="rep_email" name="rep_email">
+                </div>
 
-            <center><button type="submit" class="btn btn-primary">SignUp</button></center>
-        </form>
+                <center><button type="submit" class="btn btn-primary">SignUp</button></center>
+            </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

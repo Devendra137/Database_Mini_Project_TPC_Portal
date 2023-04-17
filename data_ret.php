@@ -28,7 +28,7 @@ include 'connection.php'
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table id="example" class="table table-striped table-light table-hover">
+            <table id="example" class="table table-striped table-light table-hover table text-center">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Job title</th>
@@ -38,6 +38,7 @@ include 'connection.php'
                   <th scope="col">Class10</th>
                   <th scope="col">Class12</th>
                   <th scope="col">Sem6</th>
+                  <th scope="col">Skill Requirement</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,6 +69,9 @@ include 'connection.php'
                       </td>
                       <td>
                         <?= $row["sem6"]; ?>
+                      </td>
+                      <td>
+                        <?= $row["skill"]; ?>
                       </td>
                     </tr>
                     <?php

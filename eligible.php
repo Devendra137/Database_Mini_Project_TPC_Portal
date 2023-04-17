@@ -54,7 +54,7 @@ $GLOBALS['sem8'] = $details['sem8'];
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table id="example" class="table table-striped table-light">
+            <table id="example" class="table table-striped table-light table-hover table text-center">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Job title</th>
@@ -64,6 +64,7 @@ $GLOBALS['sem8'] = $details['sem8'];
                   <th scope="col">Class10</th>
                   <th scope="col">Class12</th>
                   <th scope="col">Sem6</th>
+                  <th scope="col">Skill</th>
                   <th scope="col">Click to apply</th>
                 </tr>
               </thead>
@@ -99,6 +100,9 @@ $GLOBALS['sem8'] = $details['sem8'];
                       </td>
                       <td>
                         <?= $row["sem6"]; ?>
+                      </td>
+                      <td>
+                        <?= $row["skill"]; ?>
                       </td>
                       <td>
                         <a href="student_register_for_job.php?role_id=<?= $row["role_id"]; ?>&name=<?= $row["name"]; ?>"
