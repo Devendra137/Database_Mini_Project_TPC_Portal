@@ -14,6 +14,15 @@ include 'connection.php'
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <title>Hello</title>
+  <script>
+    function checkdelete() {
+      // let text;
+      // if(confirm("Are you sure you want to delete this Role?")==true){
+
+      // }
+      return confirm('Are you sure you want to delete this Role');
+    }
+  </script>
 </head>
 
 <body>
@@ -61,7 +70,8 @@ include 'connection.php'
                         <?= $row["date"]; ?>
                       </td>
                       <td><a href="updaterole.php?role_id=<?= $row["role_id"]; ?>" class="btn btn-dark">Update</a>
-                        <a href="deleterole.php?role_id=<?= $row["role_id"];?>" class="btn btn-danger">Delete</a>
+                        <a href="deleterole.php?role_id=<?= $row["role_id"]; ?>" onclick="return checkdelete()"
+                          class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                     <?php
@@ -76,6 +86,7 @@ include 'connection.php'
                 ?>
               </tbody>
             </table>
+
 
 </body>
 

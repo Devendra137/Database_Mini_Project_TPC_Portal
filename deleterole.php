@@ -36,7 +36,12 @@ if ($result) {
 <body>
     <?php require '_nav_comp.php';
     if ($showAlert) {
-        echo "DELETED ROLE SUCCESSFULLY";
+        echo "<script> alert('DELETED ROLE SUCCESSFULLY')</script>";
+    ?>
+    <META http-equiv="Refresh"content="0; URL = roles.php">
+    <?php
+    } else {
+        echo "<font color='red'> Failed to delete record ";
     }
     ?>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
