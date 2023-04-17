@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style> -->
 
 <body>
-    <?php require '_nav_comp.php' ?>
+    <?php require '_nav_comp_in.php' ?>
     <?php
     if ($login) {
         echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -86,31 +86,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-5">
-      <br>
+        <br>
         <h1 class="text-center">Company Log In</h1>
         <br><br>
         <form action="company_login.php" method="post">
-          <center>
-          <div class = "form-row">
+            <center>
+                <div class="form-row">
 
-            <div class="form-group col-md-12">
-                <label for="email">Company Email</label>
-                <input type="text" class="form-control" id="email" name="email">
+                    <div class="form-group col-md-12">
+                        <label for="email">Company Email</label>
+                        <input type="text" class="form-control" id="email" name="email">
 
-            </div>
+                    </div>
 
-          </div>
-          <div class = "form-row">
+                </div>
+                <div class="form-row">
 
-            <div class="form-group col-md-12">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
+                    <div class="form-group col-md-12">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
 
-        </div>
-            <br>
-            <button type="submit" class="btn btn-primary">Log In</button>
-          </center>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </center>
         </form>
     </div>
 
