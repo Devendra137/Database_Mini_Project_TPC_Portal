@@ -13,7 +13,7 @@ $GLOBALS['username'] = $details["username"];
 $GLOBALS['email'] = $details["email"];
 $GLOBALS['age'] = $details["age"];
 $GLOBALS['batchyear'] = $details["batchyear"];
-$GLOBALS['spec'] = $details["spec"];
+$GLOBALS['branch'] = $details["branch"];
 $GLOBALS['aoi'] = $details["aoi"];
 $GLOBALS['class10'] = $details["class10"];
 $GLOBALS['class12'] = $details["class12"];
@@ -96,16 +96,16 @@ $GLOBALS['cpi'] = $details['cpi'];
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="spec">Specialization</label>
-                    <input type="text" class="form-control" id="spec" name="spec" value="<?php echo $GLOBALS['spec'] ?>"
-                        readonly>
+                    <input type="text" class="form-control" id="spec" name="spec"
+                        value="<?php echo $GLOBALS['branch'] ?>" readonly>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="batchyear">Batch Year</label>
                     <input type="number" class="form-control" id="batchyear" name="batchyear"
                         value="<?php echo $GLOBALS['batchyear'] ?>" readonly>
                 </div>
-              </div>
-              <div class="form row">
+            </div>
+            <div class="form row">
                 <div class="form-group col-md-12">
                     <label for="aoi">Area(s) of Interest</label>
                     <input type="text" class="form-control" id="aoi" name="aoi" value="<?php echo $GLOBALS['aoi'] ?>"
@@ -124,12 +124,12 @@ $GLOBALS['cpi'] = $details['cpi'];
                         value="<?php echo $GLOBALS['class12'] ?>" readonly>
                 </div>
             </div>
-            <div class = "form row">
-              <div class = "form-group col-md-4">
-                <label for="currentsem">Current Semester</label>
-                <input type = "number" class="form-control" id="currentsem" name="currentsem"
-                value="<?php echo $GLOBALS['currentsem']?>" readonly>
-              </div>
+            <div class="form row">
+                <div class="form-group col-md-4">
+                    <label for="currentsem">Current Semester</label>
+                    <input type="number" class="form-control" id="currentsem" name="currentsem"
+                        value="<?php echo $GLOBALS['currentsem'] ?>" readonly>
+                </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-3">
@@ -170,12 +170,12 @@ $GLOBALS['cpi'] = $details['cpi'];
                         value="<?php echo $GLOBALS['sem7'] ?>" readonly>
                 </div>
             </div>
-            <div class = "form row">
-              <div class = "form-group col-md-4">
-                <label for="cpi">CPI</label>
-                <input type = "decimal" class="form-control" id="cpi" name="cpi"
-                value="<?php echo $GLOBALS['cpi']?>" readonly>
-              </div>
+            <div class="form row">
+                <div class="form-group col-md-4">
+                    <label for="cpi">CPI</label>
+                    <input type="decimal" class="form-control" id="cpi" name="cpi" value="<?php echo $GLOBALS['cpi'] ?>"
+                        readonly>
+                </div>
             </div>
         </form>
     </div>

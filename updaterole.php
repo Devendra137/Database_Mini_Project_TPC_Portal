@@ -5,7 +5,7 @@ $showError = false;
 session_start();
 
 $id = $_SESSION['id'];
-$name = $_SESSION['name'];
+// $name = $_SESSION['name'];
 $GLOBALS["role_id"] = $_GET["role_id"];
 $role_id = $GLOBALS['role_id'];
 
@@ -14,9 +14,9 @@ $role_id = $GLOBALS['role_id'];
 
 include "connection.php";
 
-$details = mysqli_fetch_assoc($conn->query("select * from company2 where id='$id' and role_id = '$role_id'"));
+$details = mysqli_fetch_assoc($conn->query("select * from company2  natural join companies where id='$id' and role_id = '$role_id'"));
 
-$GLOBALS['name'] = $name;
+$GLOBALS['name'] = $details['name'];
 $GLOBALS['email'] = $details["email"];
 $GLOBALS['jobtitle'] = $details["jobtitle"];
 $GLOBALS['jobprofile'] = $details["jobprofile"];

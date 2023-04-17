@@ -13,7 +13,7 @@ $GLOBALS['username'] = $details["username"];
 $GLOBALS['email'] = $details["email"];
 $GLOBALS['age'] = $details["age"];
 $GLOBALS['batchyear'] = $details["batchyear"];
-$GLOBALS['spec'] = $details["spec"];
+$GLOBALS['branch'] = $details["branch"];
 $GLOBALS['aoi'] = $details["aoi"];
 $GLOBALS['class10'] = $details["class10"];
 $GLOBALS['class12'] = $details["class12"];
@@ -73,8 +73,9 @@ $GLOBALS['sem8'] = $details['sem8'];
                 $class10 = $GLOBALS['class10'];
                 $class12 = $GLOBALS['class12'];
                 $sem6 = $GLOBALS['sem6'];
+                $branch = $GLOBALS['branch'];
 
-                $query = "select * from company2 natural join companies where class10 <= '$class10' and class12 <= '$class12' and sem6 <= '$sem6';";
+                $query = "select * from company2 natural join companies where class10 <= '$class10' and class12 <= '$class12' and sem6 <= '$sem6' and (`eligible-branch` & $branch) > 0;";
                 $query_run = mysqli_query($conn, $query);
                 if (mysqli_num_rows($query_run) > 0) {
                   foreach ($query_run as $row) {

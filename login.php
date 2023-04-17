@@ -49,24 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
 </head>
 
-<!-- <style>
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.button {background-color: #4CAF50;} /* Green */
-</style> -->
-
 <body>
-    <?php require '_nav.php' ?>
+    <?php require '_nav.html' ?>
     <?php
     if ($login) {
         echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">

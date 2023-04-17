@@ -46,12 +46,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sem6 = $_POST["sem6"];
     // $sem7 = $_POST["sem7"];
     // $sem8 = $_POST["sem8"];
-    $eligbr = $_POST['eligible-branch'];
-    $eligible_branch = implode(",", $eligbr);
+    $eligbr = array_values($_POST['eligible-branch']);
+    $eligible_branch = 0;
 
+    $i = 0;
 
-
-
+    while ($i < count($eligbr)) {
+        $eligible_branch = $eligible_branch + $eligbr[$i];
+        $i = $i + 1;
+    }
 
     // Check whether this username exists
     // $existSql = "SELECT * FROM `students` WHERE rollno = '$rollno'";
@@ -205,32 +208,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group col-md-6">
                     <label for="eligible-branch"><b>Eligible Branches</b></label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cse" value="CSE">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cse" value='1'>
                         <label class="form-check-label" for="it">Computer Science</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="aids" value="AIDS">
-                        <label class="form-check-label" for="finance">Artificial Intelligence and Data Science</label>
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="aids" value='2'>
+                        <label class="form-check-label" for="aids">Artificial Intelligence and Data Science</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="eee" value="EEE">
-                        <label class="form-check-label" for="consulting">Electrical and Electronics</label>
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value='4'>
+                        <label class="form-check-label" for="mnc">Mathematics and Computing</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value="ME">
-                        <label class="form-check-label" for="ecommerce">Mechanical</label>
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value='8'>
+                        <label class="form-check-label" for="ecommerce">Electrical and Electronics</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cee" value="CEE">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cee" value='16'>
                         <label class="form-check-label" for="teaching">Chemical and Environmental</label>
                     </div>
+
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="ce" value="CE">
-                        <label class="form-check-label" for="teaching">Civil</label>
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value='32'>
+                        <label class="form-check-label" for="me">Mechanical </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="ce" value='64'>
+                        <label class="form-check-label" for="ce">Civil</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="met" value="MET">
-                        <label class="form-check-label" for="teaching">Metallurgical</label>
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="met" value='128'>
+                        <label class="form-check-label" for="mme">Metallurgical</label>
                     </div>
                 </div>
             </div>

@@ -15,6 +15,12 @@
                 <a class="nav-link" href="SQLcommands.php">Perform Query</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="admin_student.php">Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_company.php">Companies</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="announcements_new.php">Make New Announcement</a>
             </li>
             <li class="nav-item">

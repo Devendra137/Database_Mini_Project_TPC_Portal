@@ -3,17 +3,20 @@ $showAlert = false;
 $showError = false;
 session_start();
 
-$rollno = $_SESSION['rollno'];
+$GLOBALS["rollno"] = $_GET["rollno"];
+$rollno = $GLOBALS['rollno'];
+// echo "$rollno";
 
 include "connection.php";
 
 $details = mysqli_fetch_assoc($conn->query("select * from students where rollno='$rollno'"));
 
+
 $GLOBALS['username'] = $details["username"];
 $GLOBALS['email'] = $details["email"];
 $GLOBALS['age'] = $details["age"];
 $GLOBALS['batchyear'] = $details["batchyear"];
-$GLOBALS['branch'] = $details["branch"];
+$GLOBALS['spec'] = $details["spec"];
 $GLOBALS['aoi'] = $details["aoi"];
 $GLOBALS['class10'] = $details["class10"];
 $GLOBALS['class12'] = $details["class12"];
@@ -27,15 +30,18 @@ $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
 $GLOBALS['currentsem'] = $details['currentsem'];
 $GLOBALS['cpi'] = $details['cpi'];
+?>
+<?php
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include 'connection.php';
     $username = $_POST["username"];
     $email = $_POST["email"];
     $rollno = $_POST["rollno"];
     $age = $_POST["age"];
     $batchyear = $_POST["batchyear"];
-    $spec = $_POST["branch"];
+    $spec = $_POST["spec"];
     $aoi = $_POST["aoi"];
     $class10 = $_POST["class10"];
     $class12 = $_POST["class12"];
@@ -81,8 +87,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cpi = $cpi / ($currentsem - 1);
     }
 
-    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', currentsem = $currentsem, cpi = $cpi where rollno ='$rollno';");
-    header("location: updateprofile.php");
+
+    $conn->query("update students set username='$username', age='$age', email = '$email',spec = '$spec',batchyear = '$batchyear',aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', currentsem = $currentsem, cpi = $cpi where rollno ='$rollno';");
+    // $conn2->query2("update students set rollno='$rollno' where email='$email';");
+    header("location: admin_student.php");
 }
 ?>
 
@@ -122,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container my-4">
         <br><br>
         <h3>Personal Details</h3><br>
-        <form method="post" action="updateprofile.php">
+        <form method="post" action="updateprofile2.php">
             <div class="form row">
                 <div class="form-group col-md-6 ">
                     <label for="username">Username</label>
@@ -132,14 +140,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group col-md-6 ">
                     <label for="rollno">Roll Number</label>
                     <input type="text" class="form-control" id="rollno" name="rollno" aria-describedby="emailHelp"
-                        value="<?php echo $_SESSION['rollno'] ?>" readonly>
+                        value="<?php echo $rollno ?>">
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="emailaddress">Email Address</label>
                     <input type="email" class="form-control" id="email" name="email"
-                        value="<?php echo $GLOBALS['email'] ?>" readonly>
+                        value="<?php echo $GLOBALS['email'] ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="age">Age</label>
@@ -153,12 +161,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group col-md-6">
                     <label for="spec">Specialization</label>
                     <input type="text" class="form-control" id="spec" name="spec"
-                        value="<?php echo $GLOBALS['branch'] ?>" readonly>
+                        value="<?php echo $GLOBALS['spec'] ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="batchyear">Batch Year</label>
                     <input type="number" class="form-control" id="batchyear" name="batchyear"
-                        value="<?php echo $GLOBALS['batchyear'] ?>" readonly>
+                        value="<?php echo $GLOBALS['batchyear'] ?>">
                 </div>
             </div>
             <div class="form row">

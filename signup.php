@@ -10,58 +10,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cpassword = $_POST["cpassword"];
     $age = $_POST["age"];
     $batchyear = $_POST["batchyear"];
-    $spec = $_POST["spec"];
+    $branch = $_POST["branch"];
     $aoi = $_POST["aoi"];
     $class10 = $_POST["class10"];
     $class12 = $_POST["class12"];
     $currentsem = $_POST["currentsem"];
     $sem1 = 0;
     $cpi = 0;
-    if($currentsem > 1)
-    {
-       $sem1 = $_POST["sem1"];
-       $cpi = $cpi + $sem1;
+    if ($currentsem > 1) {
+        $sem1 = $_POST["sem1"];
+        $cpi = $cpi + $sem1;
     }
     $sem2 = 0;
-    if($currentsem > 2)
-    {
-      $sem2 = $_POST["sem2"];
-      $cpi = $cpi + $sem2;
+    if ($currentsem > 2) {
+        $sem2 = $_POST["sem2"];
+        $cpi = $cpi + $sem2;
     }
     $sem3 = 0;
-    if($currentsem > 3)
-    {
-      $sem3 = $_POST["sem3"];
-      $cpi = $cpi + $sem3;
+    if ($currentsem > 3) {
+        $sem3 = $_POST["sem3"];
+        $cpi = $cpi + $sem3;
     }
     $sem4 = 0;
-    if($currentsem > 4)
-    {
-      $sem4 = $_POST["sem4"];
-      $cpi = $cpi + $sem4;
+    if ($currentsem > 4) {
+        $sem4 = $_POST["sem4"];
+        $cpi = $cpi + $sem4;
     }
     $sem5 = 0;
-    if($currentsem > 5)
-    {
-      $sem5 = $_POST["sem5"];
-      $cpi = $cpi + $sem5;
+    if ($currentsem > 5) {
+        $sem5 = $_POST["sem5"];
+        $cpi = $cpi + $sem5;
     }
     $sem6 = 0;
-    if($currentsem > 6)
-    {
-      $sem6 = $_POST["sem6"];
-      $cpi = $cpi + $sem6;
+    if ($currentsem > 6) {
+        $sem6 = $_POST["sem6"];
+        $cpi = $cpi + $sem6;
     }
     $sem7 = 0;
-    if($currentsem > 7)
-    {
-      $sem7 = $_POST["sem7"];
-      $cpi = $cpi + $sem7;
+    if ($currentsem > 7) {
+        $sem7 = $_POST["sem7"];
+        $cpi = $cpi + $sem7;
     }
 
-    if($currentsem > 1)
-    {
-      $cpi = $cpi / ($currentsem - 1);
+    if ($currentsem > 1) {
+        $cpi = $cpi / ($currentsem - 1);
     }
 
     function endsWith($string, $smol)
@@ -89,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $exists = false;
         if (($password == $cpassword) && endsWith($email, '@iitp.ac.in')) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `students` ( `username`, `password`, `email`,`rollno`,`age`,`batchyear`,`spec`,`aoi`,`class10`,`class12`,`currentsem`, `sem1`,`sem2`,`sem3`,`sem4`,`sem5`,`sem6`,`sem7`) VALUES ('$username', '$hash', '$email','$rollno','$age','$batchyear','$spec','$aoi','$class10','$class12', '$currentsem', '$sem1','$sem2','$sem3','$sem4','$sem5','$sem6','$sem7')";
+            $sql = "INSERT INTO `students` ( `username`, `password`, `email`,`rollno`,`age`,`batchyear`,`branch`,`aoi`,`class10`,`class12`,`currentsem`, `sem1`,`sem2`,`sem3`,`sem4`,`sem5`,`sem6`,`sem7`) VALUES ('$username', '$hash', '$email','$rollno','$age','$batchyear','$branch','$aoi','$class10','$class12', '$currentsem', '$sem1','$sem2','$sem3','$sem4','$sem5','$sem6','$sem7')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $showAlert = true;
@@ -175,32 +167,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="number" class="form-control" id="batchyear" name="batchyear">
                 </div>
             </div>
-            <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="spec">Specialization</label>
-                    <input type="text" class="form-control" id="spec" name="spec">
+
+            <div class="form row ">
+
+
+                <label for="branch" class="col control-label">Branch</label>
+                <br>
+                <div class="col-sm-12">
+                    <select class="form-control" id="branch" name="branch">
+                        <option value="" >N/A
+                        </option>
+                        <option value=1>Computer Science
+                        </option>
+                        <option value=2>Artificial Intelligence
+                        </option>
+                        <option value=4>Mathematics and Computing
+                        </option>
+                        <option value=8>Electrical and Electronics
+                        </option>
+                        <option value=16>Chemical
+                        </option>
+                        <option value=32>Mechanical
+                        </option>
+                        <option value=64>Civil
+                        </option>
+                        <option value=128>Metallurgy
+                        </option>
+
+                    </select>
                 </div>
-                <div class="form-group col-md-6">
+            </div>
+            <br>
+
+
+
+            <div class="form row">
+                <div class="form-group col-md-4">
                     <label for="aoi">Area of Interest</label>
                     <input type="text" class="form-control" id="aoi" name="aoi">
                 </div>
-            </div>
-            <div class="form row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label for="class10">Class 10 marks</label>
                     <input type="decimal" class="form-control" id="class10" name="class10">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label for="class12">Class 12 marks</label>
                     <input type="decimal" class="form-control" id="class12" name="class12">
                 </div>
             </div>
-            <div class = "form row">
-              <div class = "form-group col-md-4">
-                <label for="currentsem">Current Semester</label>
-                <input type = "number" class="form-control" id="currentsem" name="currentsem"
-                value="<?php echo $GLOBALS['currentsem']?>">
-              </div>
+            <div class="form row">
+                <div class="form-group col-md-4">
+                    <label for="currentsem">Current Semester</label>
+                    <input type="number" class="form-control" id="currentsem" name="currentsem"
+                        value="<?php echo $GLOBALS['currentsem'] ?>">
+                </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-3">
