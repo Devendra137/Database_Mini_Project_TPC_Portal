@@ -5,7 +5,7 @@ $showError = false;
 session_start();
 
 $id = $_SESSION['id'];
-$name = $_SESSION['name'];
+// $name = $_SESSION['name'];
 
 include "connection.php";
 
@@ -46,6 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sem6 = $_POST["sem6"];
     // $sem7 = $_POST["sem7"];
     // $sem8 = $_POST["sem8"];
+    $eligbr = $_POST['eligible-branch'];
+    $eligible_branch = implode(",", $eligbr);
 
 
 
@@ -73,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role_id = mysqli_fetch_assoc($result)['new_id'];
     }
 
-    $sql = "INSERT INTO `company2` ( `role_id`, `id`,`email`, `jobtitle`, `jobprofile`,`jobtype`,`salary`,`skill`,`date`,`class10`,`class12`,`sem6`) VALUES ('$role_id', '$id', '$email', '$jobtitle','$jobprofile','$jobtype','$salary','$skill','$date','$class10','$class12','$sem6')";
+    $sql = "INSERT INTO `company2` ( `role_id`, `id`,`email`, `jobtitle`, `jobprofile`,`jobtype`,`salary`,`skill`,`date`,`class10`,`class12`,`sem6`,`eligible-branch`) VALUES ('$role_id', '$id', '$email', '$jobtitle','$jobprofile','$jobtype','$salary','$skill','$date','$class10','$class12','$sem6','$eligible_branch')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         $table_name = $name . '_' . $role_id;
@@ -198,6 +200,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label class="form-check-label" for="flexRadioDefault6">
                             Other
                         </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="eligible-branch"><b>Eligible Branches</b></label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cse" value="CSE">
+                        <label class="form-check-label" for="it">Computer Science</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="aids" value="AIDS">
+                        <label class="form-check-label" for="finance">Artificial Intelligence and Data Science</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="eee" value="EEE">
+                        <label class="form-check-label" for="consulting">Electrical and Electronics</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value="ME">
+                        <label class="form-check-label" for="ecommerce">Mechanical</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cee" value="CEE">
+                        <label class="form-check-label" for="teaching">Chemical and Environmental</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="ce" value="CE">
+                        <label class="form-check-label" for="teaching">Civil</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="met" value="MET">
+                        <label class="form-check-label" for="teaching">Metallurgical</label>
                     </div>
                 </div>
             </div>
