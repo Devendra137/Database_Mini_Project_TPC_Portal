@@ -7,6 +7,16 @@ include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $GLOBALS['start_year'] = $_POST["start_year"];
   $GLOBALS['end_year'] = $_POST["end_year"];
+  $eligbr = array_values($_POST['eligible-branch']);
+  $eligible_branch = 0;
+
+  $i = 0;
+
+  while ($i < count($eligbr)) {
+    $eligible_branch = $eligible_branch + $eligbr[$i];
+    $i = $i + 1;
+  }
+  $GLOBALS['branches'] = $eligible_branch;
 }
 ?>
 
@@ -60,7 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php
                 $start_year = $GLOBALS['start_year'];
                 $end_year = $GLOBALS['end_year'];
-                $query = "select concat(name, '_', job_title) as identifier, name, job_title, count(rollno), max(ctc), min(ctc), avg(ctc) from recruited where year >= $start_year and year <= $end_year group by identifier;";
+                $branches = $GLOBALS['branches'];
+                $query = "select concat(name, '_', job_title) as identifier, name, job_title, count(rollno), max(ctc), min(ctc), avg(ctc) from recruited where (branch & $branches) > 0 and year >= $start_year and year <= $end_year group by identifier;";
                 $query_run = mysqli_query($conn, $query);
                 if (mysqli_num_rows($query_run) > 0) {
                   foreach ($query_run as $row) {
@@ -108,10 +119,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         type="submit" class="btn btn-primary" name="btn1" style="margin-right:30px">Piechart
         Company
         Wise</button></a>
-    <a href="bargraph2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button type="submit" class="btn btn-primary" name="btn2" style="margin-right:30px">Bargraph
+    <a href="bargraph2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button
+        type="submit" class="btn btn-primary" name="btn2" style="margin-right:30px">Bargraph
         Company
         Wise</button></a>
-    <a href="maxminavg2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button type="submit" class="btn btn-primary" name="btn3">CTC Company
+    <a href="maxminavg2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button
+        type="submit" class="btn btn-primary" name="btn3">CTC Company
         Wise</button></a>
   </div>
 

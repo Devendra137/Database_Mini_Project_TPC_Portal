@@ -1,7 +1,7 @@
 <?php
 $server = "localhost";
 $username = "root";
-$password = "";
+$password = "SQLP@ssw0rd";
 $database = "placement";
 
 $conn = mysqli_connect($server, $username, $password, $database);
