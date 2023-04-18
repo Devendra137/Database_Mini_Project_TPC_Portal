@@ -39,13 +39,13 @@ include 'connection.php'
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-striped table-light">
+            <table class="table table-striped table-light table-hover table text-center">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Job title</th>
                   <th scope="col">Job profile</th>
                   <th scope="col">Salary</th>
-                  <th scope="col">Last Date</th>
+                  <th scope="col">Last Date to Apply</th>
                   <th scope="col">Operations</th>
                 </tr>
               </thead>

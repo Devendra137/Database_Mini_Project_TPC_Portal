@@ -1,22 +1,33 @@
 <?php
 
-$showAlert = false;
+$showAlert1 = false;
+$showAlert2 = false;
 $showError = false;
 session_start();
 
 // $id = $_SESSION['id'];
 
-$GLOBALS["rollno"] = $_GET["rollno"];
-$rollno = $GLOBALS['rollno'];
+$GLOBALS["id"] = $_GET["id"];
+$id = $GLOBALS['id'];
 
 
 include "connection.php";
 
-$sql = "delete from students where rollno ='$rollno';";
+
+$sql = "delete from company2 where id ='$id';";
+
 $result = mysqli_query($conn, $sql);
 if ($result) {
-    $showAlert = true;
+    $showAlert1 = true;
 }
+$sql2 = "delete from companies where id ='$id';";
+
+$result2 = mysqli_query($conn, $sql2);
+if ($result2) {
+    $showAlert2 = true;
+}
+
+
 
 
 ?>
@@ -30,18 +41,18 @@ if ($result) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Delete Role</title>
+    <title>Delete Company</title>
 </head>
 
 <body>
     <?php require '_nav_comp.php';
-    if ($showAlert) {
-        echo "<script> alert('DELETED STUDENT'S RECORD SUCCESSFULLY')</script>";
+    if ($showAlert1 & $showAlert2) {
+        echo "<script> alert('DELETED COMPANY'S RECORD SUCCESSFULLY')</script>";
         ?>
-        <META http-equiv="Refresh" content="0; URL = admin_student.php">
+        <META http-equiv="Refresh" content="0; URL = admin_company.php">
         <?php
     } else {
-        echo "<font color='red'> Failed to delete record of student";
+        echo "<font color='red'> Failed to delete record of company";
     }
     ?>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

@@ -24,7 +24,6 @@ $GLOBALS['id'] = $details["id"];
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'connection.php';
     // $id = $_SESSION["id"];
     $email = $_POST["email"];
     // $name = $_SESSION['name'];

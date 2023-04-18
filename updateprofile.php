@@ -13,7 +13,7 @@ $GLOBALS['username'] = $details["username"];
 $GLOBALS['email'] = $details["email"];
 $GLOBALS['age'] = $details["age"];
 $GLOBALS['batchyear'] = $details["batchyear"];
-$GLOBALS['branch'] = $details["branch"];
+$GLOBALS['branch'] = getBranch($details["branch"]);
 $GLOBALS['aoi'] = $details["aoi"];
 $GLOBALS['class10'] = $details["class10"];
 $GLOBALS['class12'] = $details["class12"];
@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container my-4">
         <br><br>
-        <h3>Personal Details</h3><br>
+        <h3>Update Details</h3><br>
         <form method="post" action="updateprofile.php">
             <div class="form row">
                 <div class="form-group col-md-6 ">

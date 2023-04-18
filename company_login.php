@@ -87,31 +87,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container my-5">
         <br>
-        <h1 class="text-center">Company Log In</h1>
-        <br><br>
-        <form action="company_login.php" method="post">
-            <center>
-                <div class="form-row">
+        <center>
+            <h1 class="text-center">Company Log In</h1>
+            <br><br>
+            <form action="company_login.php" method="post">
 
-                    <div class="form-group col-md-12">
-                        <label for="email">Company Email</label>
-                        <input type="text" class="form-control" id="email" name="email">
-
-                    </div>
+                <div class="form-group col-md-8">
+                    <label for="email">Company Email</label>
+                    <input type="text" class="form-control" id="email" name="email">
 
                 </div>
-                <div class="form-row">
 
-                    <div class="form-group col-md-12">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-
+                <div class="form-group col-md-8">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
+
+
                 <br>
                 <button type="submit" class="btn btn-primary">Log In</button>
-            </center>
-        </form>
+            </form>
+        </center>
     </div>
 
     <!-- Optional JavaScript -->

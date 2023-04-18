@@ -10,12 +10,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="welcome_company.php">Home </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="company_login.php">Login </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="company_signup.php">Signup</a>
-            </li>
+                <a class="nav-link" href="company_signup.php">Signup</a> -->
+            <!-- </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="roles.php">All Roles</a>
             </li>
