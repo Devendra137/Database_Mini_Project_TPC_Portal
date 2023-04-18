@@ -158,13 +158,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="container my-4">
-      <a href="piechart.php?company=<?= $GLOBALS["company"]; ?>" class="btn btn-primary"
-        style="margin-right:30px">Piechart Year
+      <a href="piechart.php?company=<?= $GLOBALS["company"]; ?>&branches=<?= $GLOBALS["branches"]; ?>"
+        class="btn btn-primary" style="margin-right:30px">Piechart Year
         Wise</button></a>
-      <a href="bargraph.php?company=<?= $GLOBALS["company"]; ?>"><button type="submit" class="btn btn-primary"
-          style="margin-right:30px">Bargraph
+      <a href="bargraph.php?company=<?= $GLOBALS["company"]; ?>&branches=<?= $GLOBALS["branches"]; ?>"><button
+          type="submit" class="btn btn-primary" style="margin-right:30px">Bargraph
           Year Wise</button></a>
-      <a href="maxminavg.php?company=<?= $GLOBALS["company"]; ?>"><button type="submit" class="btn btn-primary">CTC Year
+      <a href="maxminavg.php?company=<?= $GLOBALS["company"]; ?>&branches=<?= $GLOBALS["branches"]; ?>"><button
+          type="submit" class="btn btn-primary">CTC Year
           Wise</button></a>
     </div>
 

@@ -42,7 +42,7 @@ include "connection.php";
     <div class="container my-4">
         <br><br>
         <h3>Branch-wise Statistics</h3><br>
-        <form method="post" action="year_wise.php">
+        <form method="post" action="branch_wise.php">
             <div class="form row">
                 <div class="form-group col-md-12 ">
                     <label for="company">Company Name</label>

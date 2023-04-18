@@ -1,19 +1,98 @@
 <?php
 $showAlert = false;
 $showError = false;
+$username_err = $email_err = $rollno_err = $password_err = $cpassword_err = $age_err = $batchyear_err = $branch_err = $aoi_err = $class10_err = $class12_err = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connection.php';
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $rollno = $_POST["rollno"];
-    $password = $_POST["password"];
-    $cpassword = $_POST["cpassword"];
-    $age = $_POST["age"];
-    $batchyear = $_POST["batchyear"];
-    $branch = $_POST["branch"];
-    $aoi = $_POST["aoi"];
-    $class10 = $_POST["class10"];
-    $class12 = $_POST["class12"];
+    if (empty($_POST['username'])) {
+        $username_err = "REQUIRED";
+    } else {
+        $username = $_POST["username"];
+    }
+
+    if (empty($_POST['email'])) {
+        $email_err = "REQUIRED";
+    } else {
+        $email = $_POST["email"];
+    }
+
+    if (empty($_POST['rollno'])) {
+        $rollno_err = "REQUIRED";
+    } else {
+        $rollno = $_POST["rollno"];
+    }
+
+    if (empty($_POST['password'])) {
+        $password_err = "REQUIRED";
+    } else {
+        $password = $_POST["password"];
+    }
+    if (empty($_POST['cpassword'])) {
+        $cpassword_err = "REQUIRED";
+    } else {
+        $cpassword = $_POST["cpassword"];
+    }
+
+    if (empty($_POST['age'])) {
+        $age_err = "REQUIRED";
+    } else {
+        $age = $_POST["age"];
+    }
+    if (empty($_POST['batchyear'])) {
+        $batchyear_err = "REQUIRED";
+    } else {
+        $batchyear = $_POST["batchyear"];
+    }
+    if (empty($_POST['branch'])) {
+        $branch_err = "REQUIRED";
+    } else {
+        $branch = $_POST["branch"];
+    }
+    if (empty($_POST['aoi'])) {
+        $aoi_err = "REQUIRED";
+    } else {
+        $aoi = $_POST["aoi"];
+    }
+    if (empty($_POST['class10'])) {
+        $class10_err = "REQUIRED";
+    } else {
+        $class10 = $_POST["class10"];
+    }
+    if (empty($_POST['class12'])) {
+        $class12_err = "REQUIRED";
+    } else {
+        $class12 = $_POST["class12"];
+    }
+    if (empty($_POST['class12'])) {
+        $class12_err = "REQUIRED";
+    } else {
+        $class12 = $_POST["class12"];
+    }
+    // if (empty($_POST['transcript'])) {
+    //     $class12_err = "REQUIRED";
+    // } else {
+    //     $class12 = $_POST["class12"];
+    // }
+    // if (empty($_POST['class12'])) {
+    //     $class12_err = "REQUIRED";
+    // } else {
+    //     $class12 = $_POST["class12"];
+    // }
+    $transcript = $_POST['transcript'];
+    $resume = $_POST['resume'];
+
+
+
+
+
+
+
+
+
+
+
+
     $currentsem = $_POST["currentsem"];
     $sem1 = 0;
     $cpi = 0;
@@ -81,7 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $exists = false;
         if (($password == $cpassword) && endsWith($email, '@iitp.ac.in')) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `students` ( `username`, `password`, `email`,`rollno`,`age`,`batchyear`,`branch`,`aoi`,`class10`,`class12`,`currentsem`, `sem1`,`sem2`,`sem3`,`sem4`,`sem5`,`sem6`,`sem7`) VALUES ('$username', '$hash', '$email','$rollno','$age','$batchyear','$branch','$aoi','$class10','$class12', '$currentsem', '$sem1','$sem2','$sem3','$sem4','$sem5','$sem6','$sem7')";
+            $sql = "INSERT INTO `students` ( `username`, `password`, `email`,`rollno`,`age`,`batchyear`,`branch`,`aoi`,`class10`,`class12`,`currentsem`, `sem1`,`sem2`,`sem3`,`sem4`,`sem5`,`sem6`,`sem7`,`transcript`,`resume`, `cpi`) VALUES ('$username', '$hash', '$email','$rollno','$age','$batchyear','$branch','$aoi','$class10','$class12', '$currentsem', '$sem1','$sem2','$sem3','$sem4','$sem5','$sem6','$sem7','$transcript','$resume', '$cpi')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $showAlert = true;
@@ -135,20 +214,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form row">
                 <div class="form-group col-md-6 ">
                     <label for="username">Username</label>
+                    <span>*
+                        <?php echo $username_err; ?>
+                    </span>
                     <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="rollno">Roll Number</label>
+                    <span>*
+                        <?php echo $email_err; ?>
+                    </span>
                     <input type="text" class="form-control" id="rollno" name="rollno" aria-describedby="emailHelp">
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
+                    <span>*
+                        <?php echo $password_err; ?>
+                    </span>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="cpassword">Confirm Password</label>
+                    <span>*
+                        <?php echo $cpassword_err; ?>
+                    </span>
                     <input type="password" class="form-control" id="cpassword" name="cpassword">
                     <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
                 </div>
@@ -156,14 +248,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="emailaddress">Email Address</label>
+                    <span>*
+                        <?php echo $email_err; ?>
+                    </span>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="age">Age</label>
+                    <span>*
+                        <?php echo $age_err; ?>
+                    </span>
                     <input type="number" class="form-control" id="age" name="age">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="batchyear">Batch Year</label>
+                    <span>*
+                        <?php echo $batchyear_err; ?>
+                    </span>
                     <input type="number" class="form-control" id="batchyear" name="batchyear">
                 </div>
             </div>
@@ -172,10 +273,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 <label for="branch" class="col control-label">Branch</label>
+                <span>*
+                    <?php echo $branch_err; ?>
+                </span>
                 <br>
+
                 <div class="col-sm-12">
                     <select class="form-control" id="branch" name="branch">
-                        <option value="" >N/A
+                        <option value="">N/A
                         </option>
                         <option value=1>Computer Science
                         </option>
@@ -204,14 +309,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form row">
                 <div class="form-group col-md-4">
                     <label for="aoi">Area of Interest</label>
+                    <span>*
+                        <?php echo $aoi_err; ?>
+                    </span>
                     <input type="text" class="form-control" id="aoi" name="aoi">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="class10">Class 10 marks</label>
+                    <span>*
+                        <?php echo $class10_err; ?>
+                    </span>
                     <input type="decimal" class="form-control" id="class10" name="class10">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="class12">Class 12 marks</label>
+                    <span>*
+                        <?php echo $class12_err; ?>
+                    </span>
                     <input type="decimal" class="form-control" id="class12" name="class12">
                 </div>
             </div>
@@ -252,6 +366,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group col-md-4">
                     <label for="sem7">Semester 7 spi</label>
                     <input type="decimal" class="form-control" id="sem7" name="sem7">
+                </div>
+            </div>
+            <div class="form row">
+                <div class="form-group col-md-6">
+                    <label for="transcript">Transcript link</label>
+
+                    <input type="text" class="form-control" id="transcript" name="transcript">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="resume">Resume Link</label>
+
+                    <input type="text" class="form-control" id="resume" name="resume">
                 </div>
             </div>
 

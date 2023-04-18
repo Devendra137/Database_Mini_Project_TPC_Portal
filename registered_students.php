@@ -48,7 +48,7 @@ $GLOBALS['table_name'] = $name . '_' . $role_id;
                             <tbody>
                                 <?php
                                 $table_name = $GLOBALS['table_name'];
-                                $query = "select * from $table_name join students";
+                                $query = "select * from $table_name natural join students";
                                 $query_run = mysqli_query($conn, $query);
                                 if (mysqli_num_rows($query_run) > 0) {
                                     foreach ($query_run as $row) {
