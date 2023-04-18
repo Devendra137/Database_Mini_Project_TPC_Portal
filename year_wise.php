@@ -7,6 +7,16 @@ include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $company = $_POST["company"];
   $GLOBALS['company'] = $company;
+  $eligbr = array_values($_POST['eligible-branch']);
+  $eligible_branch = 0;
+
+  $i = 0;
+
+  while ($i < count($eligbr)) {
+    $eligible_branch = $eligible_branch + $eligbr[$i];
+    $i = $i + 1;
+  }
+  $GLOBALS['branches'] = $eligible_branch;
 }
 ?>
 
@@ -97,7 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <tbody>
                 <?php
                 $company = $GLOBALS['company'];
-                $query = "select year, job_title, concat(job_title, '_', year) as identifier, count(rollno), max(ctc), min(ctc), avg(ctc) from recruited where name='$company' group by (identifier);";
+                $branch = $GLOBALS['branches'];
+                $query = "select year, job_title, concat(job_title, '_', year) as identifier, count(rollno), max(ctc), min(ctc), avg(ctc) from recruited where (branch & $branch) > 0 and name='$company' group by (identifier);";
                 $query_run = mysqli_query($conn, $query);
                 if (mysqli_num_rows($query_run) > 0) {
                   foreach ($query_run as $row) {
