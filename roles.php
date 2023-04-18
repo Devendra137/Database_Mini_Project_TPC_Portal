@@ -73,7 +73,7 @@ include 'connection.php'
                         <a href="deleterole.php?role_id=<?= $row["role_id"]; ?>" onclick="return checkdelete()"
                           class="btn btn-danger">Delete</a>
                         <a href="viewregstud.php?role_id=<?= $row["role_id"]; ?>&id=<?= $row["id"]; ?>"
-                          class="btn btn-danger">Registered Student</a>
+                          class="btn btn-success">Registered Student</a>
                       </td>
                     </tr>
                     <?php
