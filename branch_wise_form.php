@@ -15,7 +15,7 @@ include "connection.php";
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Year Wise Statistics Form</title>
+    <title>Branch Wise Statistics Form</title>
 </head>
 
 <body>
@@ -41,7 +41,7 @@ include "connection.php";
 
     <div class="container my-4">
         <br><br>
-        <h3>Year-wise Statistics</h3><br>
+        <h3>Branch-wise Statistics</h3><br>
         <form method="post" action="year_wise.php">
             <div class="form row">
                 <div class="form-group col-md-12 ">
@@ -50,42 +50,9 @@ include "connection.php";
                 </div>
             </div>
             <div class="form row">
-                <div class="form-group col-md-6">
-                    <label for="eligible-branch">Branches</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cse" value='1'>
-                        <label class="form-check-label" for="it">Computer Science</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="aids" value='2'>
-                        <label class="form-check-label" for="aids">Artificial Intelligence and Data Science</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value='4'>
-                        <label class="form-check-label" for="mnc">Mathematics and Computing</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value='8'>
-                        <label class="form-check-label" for="ecommerce">Electrical and Electronics</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="cee" value='16'>
-                        <label class="form-check-label" for="teaching">Chemical and Environmental</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="me" value='32'>
-                        <label class="form-check-label" for="me">Mechanical </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="ce" value='64'>
-                        <label class="form-check-label" for="ce">Civil</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="eligible-branch[]" id="met" value='128'>
-                        <label class="form-check-label" for="mme">Metallurgical</label>
-                    </div>
+                <div class="form-group col-md-12 ">
+                    <label for="role">Role</label>
+                    <input type="text" class="form-control" id="role" name="role">
                 </div>
                 <br>
                 <br>

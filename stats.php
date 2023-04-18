@@ -41,12 +41,18 @@ include "connection.php";
 
     <br>
     <br>
-    
+
     <div class="container my-4">
-        <center><a href="year_wise_form.php"><button type="submit" class="btn btn-primary">Year-wise Statistics</button></a></center>
-    <br>
-    <br>
-        <center><a href="company_wise_form.php"><button type="submit" class="btn btn-primary">Company-wise Statistics</button></a></center>
+        <center><a href="year_wise_form.php"><button type="submit" class="btn btn-primary">Year-wise
+                    Statistics</button></a></center>
+        <br>
+        <br>
+        <center><a href="company_wise_form.php"><button type="submit" class="btn btn-primary">Company-wise
+                    Statistics</button></a></center>
+        <br>
+        <br>
+        <center><a href="branch_wise_form.php"><button type="submit" class="btn btn-primary">Branch-wise
+                    Statistics</button></a></center>
     </div>
 
 

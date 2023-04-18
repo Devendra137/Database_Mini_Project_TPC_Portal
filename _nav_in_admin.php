@@ -21,6 +21,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="admin_company.php">Companies</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_alumni.php">Alumni</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown"
                     aria-expanded="false">
