@@ -1,6 +1,7 @@
 <?php
 include "connection.php";
 $GLOBALS["company"] = $_GET["company"];
+$GLOBALS['branches'] = $_GET['branches'];
 $company = $GLOBALS['company'];
 
 ?>
@@ -18,7 +19,8 @@ $company = $GLOBALS['company'];
                 ['Year', 'Total_students'],
                 <?php
                 // Retrieve data from the "recruited" table
-                $result = $conn->query("SELECT year, COUNT(rollno) AS Total_students FROM recruited where name='$company' GROUP BY year;");
+                $branches = $GLOBALS['branches'];
+                $result = $conn->query("SELECT year, COUNT(rollno) AS Total_students FROM recruited where name='$company' and (branch & $branches) > 0 GROUP BY year;");
                 while ($row = $result->fetch_assoc()) {
                     echo "['" . $row['year'] . "', " . $row['Total_students'] . "],";
                 }

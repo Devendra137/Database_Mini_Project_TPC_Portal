@@ -3,10 +3,12 @@
 // Example query assuming table name is "recruited_data"
 include "connection.php";
 $GLOBALS["company"] = $_GET["company"];
+$GLOBALS['branches'] = $_GET['branches'];
 $company = $GLOBALS['company'];
 
 // Retrieve data from recruited table and format it into data points
-$sql = "SELECT year, max(ctc) as max_ctc, avg(ctc) as avg_ctc, min(ctc) as min_ctc FROM recruited  where name='$company' group by year";
+$branches = $GLOBALS['branches'];
+$sql = "SELECT year, max(ctc) as max_ctc, avg(ctc) as avg_ctc, min(ctc) as min_ctc FROM recruited  where name='$company' and (branch & $branches) > 0 group by year";
 $result = mysqli_query($conn, $sql);
 $dataPoints1 = array();
 $dataPoints2 = array();

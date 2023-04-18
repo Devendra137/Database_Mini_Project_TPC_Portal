@@ -1,10 +1,11 @@
 <?php
 session_start();
-$id = $_SESSION['id'];
+$id = $_GET['id'];
 $role_id = $_GET['role_id'];
-$name = mysqli_fetch_assoc($conn->query('select name from company where id = $id'))['name'];
-$GLOBALS['table_name'] = $name . '_' . $role_id;
+
 include 'connection.php';
+$name = mysqli_fetch_assoc($conn->query("select name from companies where id = '$id'"))['name'];
+$GLOBALS['table_name'] = $name . '_' . $role_id;
 ?>
 
 <!doctype html>
@@ -47,7 +48,7 @@ include 'connection.php';
                             <tbody>
                                 <?php
                                 $table_name = $GLOBALS['table_name'];
-                                $query = "select * from $table_name";
+                                $query = "select * from $table_name join students";
                                 $query_run = mysqli_query($conn, $query);
                                 if (mysqli_num_rows($query_run) > 0) {
                                     foreach ($query_run as $row) {
@@ -57,7 +58,7 @@ include 'connection.php';
                                                 <?= $row["rollno"]; ?>
                                             </td>
                                             <td>
-                                                <?= $row["name"]; ?>
+                                                <?= $row["username"]; ?>
                                             </td>
                                             <td>
                                                 <?= $row["class10"]; ?>
