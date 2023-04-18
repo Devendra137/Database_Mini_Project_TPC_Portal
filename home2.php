@@ -11,7 +11,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #E0B0FF;
+            background-color: #BACDA9;
+            ;
             padding: 20px;
         }
 
@@ -20,7 +21,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #C18BEC;
+            background-color: #A3C596;
             padding: 20px;
         }
 
@@ -29,7 +30,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #B176E6;
+            background-color: #74AC74;
             padding: 20px;
         }
 

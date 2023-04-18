@@ -89,17 +89,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container my-5">
         <h1 class="text-center">Login to our website</h1>
         <form action="alumni_login.php" method="post">
-            <div class="form-group col-md-8">
-                <label for="email">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email">
+            <center>
+                <div class="form-group col-md-8">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email">
 
-            </div>
-            <div class="form-group col-md-8">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </center>
         </form>
     </div>
 

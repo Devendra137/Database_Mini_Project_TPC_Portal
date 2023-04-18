@@ -14,25 +14,22 @@
         <a class="navbar-brand" href="#">
             <img src="logo.jpg" alt="avatar" height="36" style="left-align">
         </a>
-        <div class="container-fluid" >
-    <a class="navbar-brand">IIT PATNA TRAINING AND PLACEMENT CELL</a>
-    </div>
-    
+        <div class="container-fluid">
+            <a class="navbar-brand">IIT PATNA TRAINING AND PLACEMENT CELL</a>
+        </div>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
                 </li>
-    </ul>
-    </div>
-                <!-- <li class="nav-item dropdown"> 
+            </ul>
+        </div>
+        <!-- <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown
