@@ -82,7 +82,7 @@ include 'connection.php';
                                             <td>
                                                 <?= $row["cpi"]; ?>
                                             </td>
-                                            <td><a href="updateprofile2.php?rollno=<?= $row["rollno"]; ?>"
+                                            <td><a href="updateprofilestud.php?rollno=<?= $row["rollno"]; ?>"
                                                     class="btn btn-dark">Update</a>
                                                 <a href="admin_delete_student.php?rollno=<?= $row["rollno"]; ?>"
                                                     onclick="return checkdelete()" class="btn btn-danger">Delete</a>

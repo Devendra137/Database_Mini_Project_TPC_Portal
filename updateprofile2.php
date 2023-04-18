@@ -5,7 +5,7 @@ session_start();
 
 $GLOBALS['id'] = $_GET['id'];
 $id = $GLOBALS['id'];
-echo $id;
+// echo $id;
 
 include "connection.php";
 
@@ -24,7 +24,7 @@ $GLOBALS['id'] = $id;
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'connection.php';
+    // include 'connection.php';
     $name = $_POST["name"];
     $description = $_POST["description"];
     $phone = $_POST["phone"];
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group col-md-12 ">
                         <label for="name">Company Name(as in documents)</label>
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
-                            value="<?php echo $name ?>">
+                            value="<?php echo $name ?>" readonly>
 
 
                     </div>
@@ -95,11 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form row">
                     <div class="form-group col-md-6">
                         <label for="email">Company Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $email ?>">
+                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $email ?>"  readonly>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="phone">Company Phone</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $phone ?>">
+                        <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $phone ?>" >
                     </div>
                 </div>
                 <div class="form row">
