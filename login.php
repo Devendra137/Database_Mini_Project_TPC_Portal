@@ -71,20 +71,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Login to our website</h1>
-        <form action="login.php" method="post">
-            <div class="form-group col-md-8">
-                <label for="rollno">Roll Number</label>
-                <input type="text" class="form-control" id="rollno" name="rollno">
-
-            </div>
-            <div class="form-group col-md-8">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
+        <center>
+            <h1 class="text-center">Student Login</h1>
             <br>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+            <br>
+            <form action="login.php" method="post">
+                <div class="form-group col-md-8">
+                    <label for="rollno">Roll Number</label>
+                    <input type="text" class="form-control" id="rollno" name="rollno">
+
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </center>
     </div>
 
     <!-- Optional JavaScript -->
