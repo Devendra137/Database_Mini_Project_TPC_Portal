@@ -72,6 +72,8 @@ include 'connection.php'
                       <td><a href="updaterole.php?role_id=<?= $row["role_id"]; ?>" class="btn btn-dark">Update</a>
                         <a href="deleterole.php?role_id=<?= $row["role_id"]; ?>" onclick="return checkdelete()"
                           class="btn btn-danger">Delete</a>
+                        <a href="viewregstud.php?role_id=<?= $row["role_id"]; ?>&id=<?= $row["id"]; ?>"
+                          class="btn btn-danger">Registered Student</a>
                       </td>
                     </tr>
                     <?php
