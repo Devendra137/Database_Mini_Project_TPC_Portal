@@ -5,9 +5,11 @@ $GLOBALS["start_year"] = $_GET["start_year"];
 $start_year = $GLOBALS['start_year'];
 $GLOBALS["end_year"] = $_GET["end_year"];
 $end_year = $GLOBALS['end_year'];
+$GLOBALS['branches'] = $_GET['branches'];
+$branches = $GLOBALS['branches'];
 
 // Retrieve data from recruited table and format it into data points
-$sql = "select name,max(ctc) as max_ctc, avg(ctc) as avg_ctc, min(ctc) as min_ctc from recruited where year >= $start_year and year <= $end_year group by name";
+$sql = "select name,max(ctc) as max_ctc, avg(ctc) as avg_ctc, min(ctc) as min_ctc from recruited where (branch & $branches) > 0 and year >= $start_year and year <= $end_year group by name";
 $result = mysqli_query($conn, $sql);
 $dataPoints1 = array();
 $dataPoints2 = array();

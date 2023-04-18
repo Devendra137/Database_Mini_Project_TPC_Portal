@@ -23,7 +23,7 @@ $GLOBALS['username'] = $details["username"];
 $GLOBALS['email'] = $details["email"];
 $GLOBALS['age'] = $details["age"];
 $GLOBALS['batchyear'] = $details["batchyear"];
-$GLOBALS['spec'] = $details["spec"];
+$GLOBALS['branch'] = getBranch($details["branch"]);
 $GLOBALS['aoi'] = $details["aoi"];
 $GLOBALS['class10'] = $details["class10"];
 $GLOBALS['class12'] = $details["class12"];
@@ -109,8 +109,8 @@ $GLOBALS['sem8'] = $details['sem8'];
             <div class="form row">
                 <div class="form-group col-md-4">
                     <label for="spec">Specialization</label>
-                    <input type="text" class="form-control" id="spec" name="spec" value="<?php echo $GLOBALS['spec'] ?>"
-                        readonly>
+                    <input type="text" class="form-control" id="spec" name="spec"
+                        value="<?php echo $GLOBALS['branch'] ?>" readonly>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="batchyear">Batch Year</label>

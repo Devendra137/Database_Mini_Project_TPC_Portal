@@ -115,15 +115,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 
   <div class="container my-4 ">
-    <a href="piechart2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button
+    <a
+      href="piechart2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>&branches=<?= $GLOBALS["branches"]; ?>"><button
         type="submit" class="btn btn-primary" name="btn1" style="margin-right:30px">Piechart
         Company
         Wise</button></a>
-    <a href="bargraph2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button
+    <a
+      href="bargraph2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>&branches=<?= $GLOBALS["branches"]; ?>"><button
         type="submit" class="btn btn-primary" name="btn2" style="margin-right:30px">Bargraph
         Company
         Wise</button></a>
-    <a href="maxminavg2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>"><button
+    <a
+      href="maxminavg2.php?start_year=<?= $GLOBALS["start_year"]; ?>&end_year=<?= $GLOBALS["end_year"]; ?>&branches=<?= $GLOBALS["branches"]; ?>"><button
         type="submit" class="btn btn-primary" name="btn3">CTC Company
         Wise</button></a>
   </div>
