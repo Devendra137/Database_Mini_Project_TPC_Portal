@@ -41,8 +41,8 @@
       </li> -->
 
 
-        </ul>
+    </ul>
 
-      </div>
-      <a class="navbar-brand" href="/login.php">IIT Patna</a>
+  </div>
+  <a class="navbar-brand" href="/login.php">IIT Patna</a>
   </nav>

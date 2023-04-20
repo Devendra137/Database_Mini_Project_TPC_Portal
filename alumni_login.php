@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Login to our website</h1>
+        <h1 class="text-center">Log in to our website</h1>
         <form action="alumni_login.php" method="post">
             <center>
                 <div class="form-group col-md-8">

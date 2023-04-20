@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="logo.jpg" alt="avatar" height="36" style="left-align">
+            <img src="logo.jpg" alt="avatar" height="36">
         </a>
         <div class="container-fluid">
             <a class="navbar-brand">IIT PATNA TRAINING AND PLACEMENT CELL</a>
