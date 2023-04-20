@@ -27,6 +27,8 @@ $GLOBALS['sem7'] = $details['sem7'];
 $GLOBALS['sem8'] = $details['sem8'];
 $GLOBALS['currentsem'] = $details['currentsem'];
 $GLOBALS['cpi'] = $details['cpi'];
+$GLOBALS['transcript'] = $details['transcript'];
+$GLOBALS['resume'] = $details['resume'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,11 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rollno = $_POST["rollno"];
     $age = $_POST["age"];
     $batchyear = $_POST["batchyear"];
-    $spec = $_POST["branch"];
     $aoi = $_POST["aoi"];
     $class10 = $_POST["class10"];
     $class12 = $_POST["class12"];
     $currentsem = $_POST["currentsem"];
+    $transcript = $_POST['transcript'];
+    $resume = $_POST['resume'];
+
     $sem1 = 0;
     $cpi = 0;
     if ($currentsem > 1) {
@@ -81,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cpi = $cpi / ($currentsem - 1);
     }
 
-    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', currentsem = $currentsem, cpi = $cpi where rollno ='$rollno';");
+    $conn->query("update students set username='$username', age='$age', aoi='$aoi', class10='$class10', class12='$class12', sem1='$sem1', sem2='$sem2', sem3='$sem3', sem4='$sem4', sem5='$sem5', sem6='$sem6', sem7='$sem7', currentsem = $currentsem, cpi = $cpi,transcript='$transcript',resume='$resume' where rollno ='$rollno';");
     header("location: updateprofile.php");
 }
 ?>
@@ -230,6 +234,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="decimal" class="form-control" id="sem7" name="sem7" value="<?php if ($GLOBALS['currentsem'] > 7) {
                         echo $GLOBALS['sem7'];
                     } ?>">
+                </div>
+            </div>
+            <div class="form row">
+                <div class="form-group col-md-6">
+                    <label for="transcript">Transcript link</label>
+
+                    <input type="text" class="form-control" id="transcript" name="transcript"
+                        value="<?php echo $GLOBALS['transcript'] ?>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="resume">Resume Link</label>
+
+                    <input type="text" class="form-control" id="resume" name="resume"
+                        value="<?php echo $GLOBALS['resume'] ?>">
                 </div>
             </div>
 
