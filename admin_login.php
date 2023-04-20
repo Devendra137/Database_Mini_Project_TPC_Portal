@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="admin_login.php" method="post">
             <div class="form-group col-md-8">
                 <label for="username">Username</label>
-                <input type="username" class="form-control" id="username" name="username">
+                <input type="text" class="form-control" id="username" name="username">
 
             </div>
             <div class="form-group col-md-8">
@@ -104,6 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

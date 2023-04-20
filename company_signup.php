@@ -1,19 +1,61 @@
 <?php
 $showAlert = false;
 $showError = false;
+$showError2 = false;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connection.php';
-    $name = $_POST["name"];
-    $pwd = $_POST["password"];
-    $cpwd = $_POST["conf_password"];
-    $description = $_POST["description"];
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
-    $website = $_POST["website"];
-    $rep_name = $_POST["rep_name"];
-    $rep_phone = $_POST["rep_phone"];
-    $rep_email = $_POST["rep_email"];
 
+    if (empty($_POST['name'])) {
+        $showError2 = true;
+    } else {
+        $name = $_POST["name"];
+    }
+    if (empty($_POST['password'])) {
+        $showError2 = true;
+    } else {
+        $pwd = $_POST["password"];
+    }
+    if (empty($_POST['conf_password'])) {
+        $showError2 = true;
+    } else {
+        $cpwd = $_POST["conf_password"];
+    }
+
+
+
+    if (empty($_POST['phone'])) {
+        $showError2 = true;
+    } else {
+        $phone = $_POST["phone"];
+    }
+    if (empty($_POST['email'])) {
+        $showError2 = true;
+    } else {
+        $email = $_POST["email"];
+    }
+    if (empty($_POST['website'])) {
+        $showError2 = true;
+    } else {
+        $website = $_POST["website"];
+    }
+    if (empty($_POST['rep_name'])) {
+        $showError2 = true;
+    } else {
+        $rep_name = $_POST["rep_name"];
+    }
+    if (empty($_POST['rep_phone'])) {
+        $showError2 = true;
+    } else {
+        $rep_phone = $_POST["rep_phone"];
+    }
+    if (empty($_POST['rep_email'])) {
+        $showError2 = true;
+    } else {
+        $rep_email = $_POST["rep_email"];
+    }
+
+    $description = $_POST["description"];
     function endsWith($string, $smol)
     {
         $len = strlen($smol);
@@ -22,8 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         return substr($string, -$len) === $smol;
     }
-
-
 
     // Check whether this username exists
     $existSql = "SELECT * FROM companies WHERE email = '$email'";
@@ -35,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // TODO: validate email
         // $exists = false;
-        if ($pwd == $cpwd) {
+        if ($pwd == $cpwd && $showError2 == false) {
             $hash = password_hash($pwd, PASSWORD_DEFAULT);
             $sql = "INSERT INTO companies (name, email, password, description, phone, website, rep_name, rep_phone, rep_email) VALUES ('$name', '$email', '$hash', '$description', '$phone', '$website', '$rep_name', '$rep_phone', '$rep_email')";
             $result = mysqli_query($conn, $sql);
@@ -43,7 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $showAlert = true;
             }
         } else {
-            $showError = "Passwords do not match";
+            if ($showError2 == false) {
+                $showError = "Passwords do not match";
+            }
         }
     }
 }
@@ -80,6 +122,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span aria-hidden="true">×</span>
         </button>
     </div> ';
+    } else if ($showError2) {
+        echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> Fill all required spaces
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div> ';
     }
     ?>
 
@@ -94,16 +143,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form row">
                     <div class="form-group col-md-12 ">
                         <label for="name">Company Name(as in documents)</label>
+                        <span>*
+                        </span>
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
                     </div>
                 </div>
                 <div class="form row">
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
+                        <span>*
+                        </span>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="conf_password">Confirm Password</label>
+                        <span>*
+                        </span>
                         <input type="password" class="form-control" id="conf_password" name="conf_password">
                         <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
                     </div>
@@ -111,22 +166,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form row">
                     <div class="form-group col-md-6">
                         <label for="email">Company Email Address</label>
+                        <span>*
+                        </span>
                         <input type="email" class="form-control" id="email" name="email">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="phone">Company Phone</label>
+                        <span>*
+                        </span>
                         <input type="text" class="form-control" id="phone" name="phone">
                     </div>
                 </div>
                 <div class="form row">
                     <div class="form-group col-md-12">
                         <label for="website">Company Website</label>
+                        <span>*
+                        </span>
                         <input type="text" class="form-control" id="website" name="website">
                     </div>
                 </div>
-                <div class="form-group col-md-12">
-                    <label for="description"> Company Description </label>
-                    <input type="text" class="form-control" id="description" name="description">
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="description"> Company Description </label>
+                        <input type="text" class="form-control" id="description" name="description">
+                    </div>
                 </div>
 
                 <br>
@@ -137,16 +200,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form row">
                     <div class="form-group col-md-6">
                         <label for="rep_name">Representative Name</label>
+                        <span>*
+                        </span>
                         <input type="text" class="form-control" id="rep_name" name="rep_name">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="rep_phone">Representative Phone</label>
+                        <span>*
+                        </span>
                         <input type="text" class="form-control" id="rep_phone" name="rep_phone">
                     </div>
                 </div>
-                <div class="form-group col-md-12">
-                    <label for="rep_email">Representative Email</label>
-                    <input type="text" class="form-control" id="rep_email" name="rep_email">
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <label for="rep_email">Representative Email</label>
+                        <span>*
+                        </span>
+                        <input type="text" class="form-control" id="rep_email" name="rep_email">
+                    </div>
                 </div>
 
                 <center><button type="submit" class="btn btn-primary">SignUp</button></center>

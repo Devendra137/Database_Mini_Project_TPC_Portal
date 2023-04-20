@@ -14,7 +14,7 @@
       <img src="logo.jpg" alt="avatar" height="36" style="left-align">
     </a>
 
-    <a class="navbar-brand" href="/admin_login.php">Training and Placement Cell</a>
+    <a class="navbar-brand" href="/home2.php">Training and Placement Cell</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
