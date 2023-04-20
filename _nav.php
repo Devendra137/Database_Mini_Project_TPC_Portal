@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="welcome.php">Home </a>
+        <a class="nav-link" href="home2.php">Home </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="login.php">Login </a>
@@ -28,7 +28,7 @@
 
 
     </ul>
-    
+
   </div>
   <a class="navbar-brand" href="/login.php">IIT Patna</a>
 </nav>

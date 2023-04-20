@@ -8,13 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="alumni_welcome.php">Home </a>
+        <a class="nav-link" href="home2.php">Home </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="alumni_login.php">Login </a>
+        <a class="nav-link" href="alumni_login.php">Log in</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="alumni_signup.php">Signup</a>
+        <a class="nav-link" href="alumni_signup.php">Sign up</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a>
@@ -22,7 +22,7 @@
 
 
     </ul>
-    
+
   </div>
   <a class="navbar-brand" href="/alumni_login.php">IIT Patna</a>
 </nav>
