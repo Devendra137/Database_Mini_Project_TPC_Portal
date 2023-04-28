@@ -1,23 +1,25 @@
 <?php
-
+// Retrieve data from recruited table
+// Example query assuming table name is "recruited_data"
 include "connection.php";
-$GLOBALS["start_year"] = $_GET["start_year"];
-$start_year = $GLOBALS['start_year'];
-$GLOBALS["end_year"] = $_GET["end_year"];
-$end_year = $GLOBALS['end_year'];
-$GLOBALS['branches'] = $_GET['branches'];
-$branches = $GLOBALS['branches'];
+
+$GLOBALS['company'] = $_GET["company"];
+$GLOBALS['role'] = $_GET["role"];
+$company = $GLOBALS['company'];
+$role = $GLOBALS['role'];
 
 // Retrieve data from recruited table and format it into data points
-$sql = "select name,max(ctc) as max_ctc, avg(ctc) as avg_ctc, min(ctc) as min_ctc from recruited where (branch & $branches) > 0 and year >= $start_year and year <= $end_year group by name";
+
+$sql = "SELECT branch, max(ctc) as max_ctc, avg(ctc) as avg_ctc, min(ctc) as min_ctc FROM recruited where name = '$company' and job_title = '$role' group by branch";
+
 $result = mysqli_query($conn, $sql);
 $dataPoints1 = array();
 $dataPoints2 = array();
 $dataPoints3 = array();
 while ($row = mysqli_fetch_assoc($result)) {
-    $dataPoints1[] = array("label" => $row["name"], "y" => $row["max_ctc"]);
-    $dataPoints2[] = array("label" => $row["name"], "y" => $row["avg_ctc"]);
-    $dataPoints3[] = array("label" => $row["name"], "y" => $row["min_ctc"]);
+    $dataPoints1[] = array("label" => getBranch($row["branch"]), "y" => $row["max_ctc"]);
+    $dataPoints2[] = array("label" => getBranch($row["branch"]), "y" => $row["avg_ctc"]);
+    $dataPoints3[] = array("label" => getBranch($row["branch"]), "y" => $row["min_ctc"]);
 }
 mysqli_close($conn);
 ?>
@@ -33,7 +35,7 @@ mysqli_close($conn);
                 animationEnabled: true,
                 theme: "light2",
                 title: {
-                    text: "CTC Data"
+                    text: "Branch Wise Salary Distribution"
                 },
                 axisY: {
                     title: "Salary",
@@ -48,16 +50,19 @@ mysqli_close($conn);
                 data: [{
                     type: "column",
                     name: "Max CTC",
+
                     showInLegend: true,
                     dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
                 }, {
                     type: "column",
                     name: "Avg CTC",
+
                     showInLegend: true,
                     dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
                 }, {
                     type: "column",
                     name: "Min CTC",
+
                     showInLegend: true,
                     dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
                 }]

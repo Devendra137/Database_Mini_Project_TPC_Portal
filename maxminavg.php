@@ -47,22 +47,19 @@ mysqli_close($conn);
                 data: [{
                     type: "column",
                     name: "Max CTC",
-                    indexLabel: "{y}",
-                    yValueFormatString: "$#0.##",
+
                     showInLegend: true,
                     dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
                 }, {
                     type: "column",
                     name: "Avg CTC",
-                    indexLabel: "{y}",
-                    yValueFormatString: "$#0.##",
+
                     showInLegend: true,
                     dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
                 }, {
                     type: "column",
                     name: "Min CTC",
-                    indexLabel: "{y}",
-                    yValueFormatString: "$#0.##",
+
                     showInLegend: true,
                     dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
                 }]

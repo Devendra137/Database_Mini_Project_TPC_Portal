@@ -1,18 +1,61 @@
 <?php
 $showAlert = false;
 $showError = false;
+$showError2 = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connection.php';
-    $fname = $_POST["fname"];
-    $email = $_POST["email"];
-    $rollno = $_POST["rollno"];
-    $password = $_POST["password"];
-    $cpassword = $_POST["cpassword"];
-    $batchof = $_POST["batchof"];
-    $phone = $_POST["phone"];
-    $linkedin = $_POST["linkedin"];
-    $job = $_POST["job"];
-    $company = $_POST["company"];
+
+    if (empty($_POST['fname'])) {
+        $showError2 = true;
+    } else {
+        $fname = $_POST["fname"];
+    }
+    if (empty($_POST['email'])) {
+        $showError2 = true;
+    } else {
+        $email = $_POST["email"];
+    }
+    if (empty($_POST['rollno'])) {
+        $showError2 = true;
+    } else {
+        $rollno = $_POST["rollno"];
+    }
+    if (empty($_POST['password'])) {
+        $showError2 = true;
+    } else {
+        $password = $_POST["password"];
+    }
+    if (empty($_POST['cpassword'])) {
+        $showError2 = true;
+    } else {
+        $cpassword = $_POST["cpassword"];
+    }
+    if (empty($_POST['batchof'])) {
+        $showError2 = true;
+    } else {
+        $batchof = $_POST["batchof"];
+    }
+    if (empty($_POST['phone'])) {
+        $showError2 = true;
+    } else {
+        $phone = $_POST["phone"];
+    }
+    if (empty($_POST['linkedin'])) {
+        $showError2 = true;
+    } else {
+        $linkedin = $_POST["linkedin"];
+    }
+    if (empty($_POST['job'])) {
+        $showError2 = true;
+    } else {
+        $job = $_POST["job"];
+    }
+    if (empty($_POST['company'])) {
+        $showError2 = true;
+    } else {
+        $company = $_POST["company"];
+    }
+
 
     function endsWith($string, $smol)
     {
@@ -22,9 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         return substr($string, -$len) === $smol;
     }
-
-
-
     // Check whether this username exists
     $existSql = "SELECT * FROM `alumni` WHERE rollno = '$rollno'";
     $result = mysqli_query($conn, $existSql);
@@ -34,15 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $showError = "User Already Exists";
     } else {
         // $exists = false;
-        if (($password == $cpassword)) {
+        if (($password == $cpassword) && ($showError2 == false)) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO `alumni` ( `fname`, `password`, `email`,`rollno`,`batchof`,`phone`,`linkedin`,`job`,`company`) VALUES ('$fname', '$hash', '$email','$rollno','$batchof','$phone','$linkedin','$job','$company')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $showAlert = true;
             }
-        }else {
-            $showError = "Passwords do not match";
+        } else {
+            if ($showError2 == false) {
+                $showError = "Passwords do not match";
+            }
         }
     }
 }
@@ -79,6 +121,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span aria-hidden="true">×</span>
         </button>
     </div> ';
+    } else if ($showError2) {
+        echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> Fill all required spaces
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div> ';
     }
     ?>
 
@@ -88,20 +137,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form row">
                 <div class="form-group col-md-6 ">
                     <label for="fname">Name</label>
+                    <span>*
+                    </span>
                     <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="rollno">Roll Number</label>
+                    <span>*
+                    </span>
                     <input type="text" class="form-control" id="rollno" name="rollno" aria-describedby="emailHelp">
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
+                    <span>*
+                    </span>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="cpassword">Confirm Password</label>
+                    <span>*
+                    </span>
                     <input type="password" class="form-control" id="cpassword" name="cpassword">
                     <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
                 </div>
@@ -109,30 +166,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="email">Email Address</label>
+                    <span>*
+                    </span>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="batchof">Batch Of</label>
+                    <span>*
+                    </span>
                     <input type="number" class="form-control" id="batchof" name="batchof">
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="phone">Phone No</label>
+                    <span>*
+                    </span>
                     <input type="text" class="form-control" id="phone" name="phone">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="linkedin">LinkedIn Profile</label>
+                    <span>*
+                    </span>
                     <input type="text" class="form-control" id="linkedin" name="linkedin">
                 </div>
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="job">Job Title</label>
+                    <span>*
+                    </span>
                     <input type="text" class="form-control" id="job" name="job">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="company">Company</label>
+                    <span>*
+                    </span>
                     <input type="text" class="form-control" id="company" name="company">
                 </div>
             </div>
