@@ -21,5 +21,5 @@ An online portal for our college's Training & Placement Cell. This portal allows
 ### Tech Stack
 PHP, MySQL, HTML, CSS, Apache, XAMPP
 
-### Project Report + Video
-https://drive.google.com/drive/folders/1m1uuct-zcwVag8uMMUHwJv_ToZrPLvr_?usp=sharing
+### Project Report
+https://drive.google.com/drive/folders/1fPtPMiXXpaVNr_GoEJ6ZFWnSeaZBvxIR?usp=sharing 
